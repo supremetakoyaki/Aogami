@@ -45,7 +45,7 @@ namespace Aogami.WinForms
             using OpenFileDialog ofd = new();
             ofd.Filter = "Shin Megami Tensei V decrypted save file|*.*";
             ofd.Title = "Choose your decrypted Shin Megami Tensei V save file";
-            ofd.FileName = $"{openedGameSaveData.FileName}_DECRYPTED";
+            ofd.FileName = $"{Path.GetFileName(openedGameSaveData.FileName)}_DECRYPTED";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 if (MessageBox.Show("Please note that this will overwrite everything in your current save file. Are you sure?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
@@ -62,7 +62,7 @@ namespace Aogami.WinForms
             using SaveFileDialog sfd = new();
             sfd.Filter = "Shin Megami Tensei V decrypted save file|*.*";
             sfd.Title = "Save your decrypted Shin Megami Tensei V save file";
-            sfd.FileName = $"{openedGameSaveData.FileName}_DECRYPTED";
+            sfd.FileName = $"{Path.GetFileName(openedGameSaveData.FileName)}_DECRYPTED";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 await openedGameSaveData.ExportDecryptedData(sfd.FileName);
