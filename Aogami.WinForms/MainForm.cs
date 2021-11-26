@@ -70,6 +70,7 @@ namespace Aogami.WinForms
                 bool success = await openedGameSaveData.ImportDecryptedData(ofd.FileName);
                 if (!success) MessageBox.Show("Your data could not be imported. Please check it is a decrypted, 388KB Shin Megami Tensei V save file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else MessageBox.Show("Your data has been imported successfully.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SerializeSaveFileData();
             }
         }
 
@@ -138,10 +139,10 @@ namespace Aogami.WinForms
             readyForUserInput = false;
             if (FirstNameTextBox.Text.Length > 8) FirstNameTextBox.Text = FirstNameTextBox.Text[..8];
             if (LastNameTextBox.Text.Length > 8) LastNameTextBox.Text = LastNameTextBox.Text[..8];
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_a, FirstNameTextBox.Text);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_b, FirstNameTextBox.Text);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_c, FirstNameTextBox.Text);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FullName, $"{FirstNameTextBox.Text} {LastNameTextBox.Text}");
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_a, FirstNameTextBox.Text, 8);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_b, FirstNameTextBox.Text, 8);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_c, FirstNameTextBox.Text, 8);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FullName, $"{FirstNameTextBox.Text} {LastNameTextBox.Text}", 20);
             readyForUserInput = true;
         }
 

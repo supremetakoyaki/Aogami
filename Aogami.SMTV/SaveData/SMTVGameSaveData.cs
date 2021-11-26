@@ -139,12 +139,21 @@ namespace Aogami.SMTV.SaveData
             decryptedData[Offset] = Byte;
         }
 
-        public void UpdateString(int Offset, string Text)
+        public void UpdateString(int Offset, string Text, int MaxLength = 8)
         {
             foreach (char c in Text)
             {
                 decryptedData[Offset++] = Convert.ToByte(c);
                 decryptedData[Offset++] = 0;
+            }
+
+            if (Text.Length < MaxLength)
+            {
+                for (int i = 0; i < MaxLength - Text.Length; i++)
+                {
+                    decryptedData[Offset++] = 0;
+                    decryptedData[Offset++] = 0;
+                }
             }
         }
 
