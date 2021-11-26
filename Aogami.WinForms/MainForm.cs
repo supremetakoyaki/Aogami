@@ -1,6 +1,5 @@
 using Aogami.SMTV.SaveData;
 using Aogami.WinForms.Imaging;
-using System.Diagnostics;
 
 namespace Aogami.WinForms
 {
@@ -22,12 +21,29 @@ namespace Aogami.WinForms
         {
             if (openedGameSaveData == null) return;
             readyForUserInput = false;
+
             FirstNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.FirstName_a, 16, true);
             LastNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.LastName, 16, true);
+
+            long DateSaved = openedGameSaveData.RetrieveInt64(SMTVGameSaveDataOffsets.DateSaved);
+            if (DateSaved < 630823248000000000) DateSaved = 630823248000000000;
+            else if (DateSaved > 662379552000000000) DateSaved = 662379552000000000;
+            DateSavedDateTimePicker.Value = new(DateSaved, DateTimeKind.Local);
+
+            int PlayTime = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.PlayTime);
+            if (PlayTime < 0) PlayTime = 0;
+            else if (PlayTime > 35999940) PlayTime = 35999940;
+            PlayTimeHoursNumUpDown.Value = PlayTime / 3600;
+            PlayTimeMinutesNumUpDown.Value = PlayTime / 60 % 60;
 
             int Macca = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.Macca);
             if (Macca < 0) Macca = 0;
             MaccaNumUpDown.Value = Macca;
+
+            int Glory = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.Glory);
+            if (Glory < 0) Glory = 0;
+            GloryNumUpDown.Value = Glory;
+
             readyForUserInput = true;
         }
 
@@ -162,6 +178,36 @@ namespace Aogami.WinForms
             if (openedGameSaveData == null || !readyForUserInput) return;
             readyForUserInput = false;
             openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.Macca, (int)MaccaNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void GloryNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.Glory, (int)GloryNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void PlayTimeHoursNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            PlayTimeMinutesNumUpDown_ValueChanged(sender, e);
+        }
+
+        private void PlayTimeMinutesNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.PlayTime, (int)(PlayTimeHoursNumUpDown.Value * 3600 + PlayTimeMinutesNumUpDown.Value * 60));
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.PlayTime2, (int)(PlayTimeHoursNumUpDown.Value * 3600 + PlayTimeMinutesNumUpDown.Value * 60));
+            readyForUserInput = true;
+        }
+
+        private void DateSavedDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt64(SMTVGameSaveDataOffsets.DateSaved, DateSavedDateTimePicker.Value.Ticks);
             readyForUserInput = true;
         }
     }

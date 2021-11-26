@@ -34,6 +34,15 @@
             this.SaveChangesButton = new System.Windows.Forms.Button();
             this.SaveDataTabControl = new System.Windows.Forms.TabControl();
             this.GeneralStatsTabPage = new System.Windows.Forms.TabPage();
+            this.DateSavedDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.DateSavedLabel = new System.Windows.Forms.Label();
+            this.MinutesLabel = new System.Windows.Forms.Label();
+            this.PlayTimeMinutesNumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.HoursLabel = new System.Windows.Forms.Label();
+            this.PlayTimeHoursNumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.PlayTimeLabel = new System.Windows.Forms.Label();
+            this.GloryNumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.GloryLabel = new System.Windows.Forms.Label();
             this.MaccaNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.MaccaLabel = new System.Windows.Forms.Label();
             this.LastNameTextBox = new System.Windows.Forms.TextBox();
@@ -50,6 +59,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
             this.GeneralStatsTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayTimeMinutesNumUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayTimeHoursNumUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GloryNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaccaNumUpDown)).BeginInit();
             this.SaveDataGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +108,15 @@
             // 
             // GeneralStatsTabPage
             // 
+            this.GeneralStatsTabPage.Controls.Add(this.DateSavedDateTimePicker);
+            this.GeneralStatsTabPage.Controls.Add(this.DateSavedLabel);
+            this.GeneralStatsTabPage.Controls.Add(this.MinutesLabel);
+            this.GeneralStatsTabPage.Controls.Add(this.PlayTimeMinutesNumUpDown);
+            this.GeneralStatsTabPage.Controls.Add(this.HoursLabel);
+            this.GeneralStatsTabPage.Controls.Add(this.PlayTimeHoursNumUpDown);
+            this.GeneralStatsTabPage.Controls.Add(this.PlayTimeLabel);
+            this.GeneralStatsTabPage.Controls.Add(this.GloryNumUpDown);
+            this.GeneralStatsTabPage.Controls.Add(this.GloryLabel);
             this.GeneralStatsTabPage.Controls.Add(this.MaccaNumUpDown);
             this.GeneralStatsTabPage.Controls.Add(this.MaccaLabel);
             this.GeneralStatsTabPage.Controls.Add(this.LastNameTextBox);
@@ -110,6 +131,102 @@
             this.GeneralStatsTabPage.TabIndex = 0;
             this.GeneralStatsTabPage.Text = "General";
             this.GeneralStatsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // DateSavedDateTimePicker
+            // 
+            this.DateSavedDateTimePicker.CustomFormat = "MMMM dd\',\' yyyy \'at\' h\':\'mm tt";
+            this.DateSavedDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateSavedDateTimePicker.Location = new System.Drawing.Point(303, 40);
+            this.DateSavedDateTimePicker.MaxDate = new System.DateTime(2999, 12, 31, 0, 0, 0, 0);
+            this.DateSavedDateTimePicker.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.DateSavedDateTimePicker.Name = "DateSavedDateTimePicker";
+            this.DateSavedDateTimePicker.Size = new System.Drawing.Size(231, 23);
+            this.DateSavedDateTimePicker.TabIndex = 15;
+            this.DateSavedDateTimePicker.ValueChanged += new System.EventHandler(this.DateSavedDateTimePicker_ValueChanged);
+            // 
+            // DateSavedLabel
+            // 
+            this.DateSavedLabel.AutoSize = true;
+            this.DateSavedLabel.Location = new System.Drawing.Point(229, 43);
+            this.DateSavedLabel.Name = "DateSavedLabel";
+            this.DateSavedLabel.Size = new System.Drawing.Size(68, 15);
+            this.DateSavedLabel.TabIndex = 14;
+            this.DateSavedLabel.Text = "Date Saved:";
+            // 
+            // MinutesLabel
+            // 
+            this.MinutesLabel.AutoSize = true;
+            this.MinutesLabel.Location = new System.Drawing.Point(459, 14);
+            this.MinutesLabel.Name = "MinutesLabel";
+            this.MinutesLabel.Size = new System.Drawing.Size(33, 15);
+            this.MinutesLabel.TabIndex = 13;
+            this.MinutesLabel.Text = "mins";
+            // 
+            // PlayTimeMinutesNumUpDown
+            // 
+            this.PlayTimeMinutesNumUpDown.Location = new System.Drawing.Point(400, 11);
+            this.PlayTimeMinutesNumUpDown.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.PlayTimeMinutesNumUpDown.Name = "PlayTimeMinutesNumUpDown";
+            this.PlayTimeMinutesNumUpDown.Size = new System.Drawing.Size(53, 23);
+            this.PlayTimeMinutesNumUpDown.TabIndex = 12;
+            this.PlayTimeMinutesNumUpDown.ValueChanged += new System.EventHandler(this.PlayTimeMinutesNumUpDown_ValueChanged);
+            // 
+            // HoursLabel
+            // 
+            this.HoursLabel.AutoSize = true;
+            this.HoursLabel.Location = new System.Drawing.Point(362, 14);
+            this.HoursLabel.Name = "HoursLabel";
+            this.HoursLabel.Size = new System.Drawing.Size(23, 15);
+            this.HoursLabel.TabIndex = 11;
+            this.HoursLabel.Text = "hrs";
+            // 
+            // PlayTimeHoursNumUpDown
+            // 
+            this.PlayTimeHoursNumUpDown.Location = new System.Drawing.Point(303, 11);
+            this.PlayTimeHoursNumUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.PlayTimeHoursNumUpDown.Name = "PlayTimeHoursNumUpDown";
+            this.PlayTimeHoursNumUpDown.Size = new System.Drawing.Size(53, 23);
+            this.PlayTimeHoursNumUpDown.TabIndex = 10;
+            this.PlayTimeHoursNumUpDown.ValueChanged += new System.EventHandler(this.PlayTimeHoursNumUpDown_ValueChanged);
+            // 
+            // PlayTimeLabel
+            // 
+            this.PlayTimeLabel.AutoSize = true;
+            this.PlayTimeLabel.Location = new System.Drawing.Point(229, 14);
+            this.PlayTimeLabel.Name = "PlayTimeLabel";
+            this.PlayTimeLabel.Size = new System.Drawing.Size(61, 15);
+            this.PlayTimeLabel.TabIndex = 9;
+            this.PlayTimeLabel.Text = "Play Time:";
+            // 
+            // GloryNumUpDown
+            // 
+            this.GloryNumUpDown.Location = new System.Drawing.Point(78, 98);
+            this.GloryNumUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.GloryNumUpDown.Name = "GloryNumUpDown";
+            this.GloryNumUpDown.Size = new System.Drawing.Size(90, 23);
+            this.GloryNumUpDown.TabIndex = 8;
+            this.GloryNumUpDown.ValueChanged += new System.EventHandler(this.GloryNumUpDown_ValueChanged);
+            // 
+            // GloryLabel
+            // 
+            this.GloryLabel.AutoSize = true;
+            this.GloryLabel.Location = new System.Drawing.Point(6, 100);
+            this.GloryLabel.Name = "GloryLabel";
+            this.GloryLabel.Size = new System.Drawing.Size(38, 15);
+            this.GloryLabel.TabIndex = 7;
+            this.GloryLabel.Text = "Glory:";
             // 
             // MaccaNumUpDown
             // 
@@ -207,6 +324,8 @@
             // MakeBackUpCheckbox
             // 
             this.MakeBackUpCheckbox.AutoSize = true;
+            this.MakeBackUpCheckbox.Checked = true;
+            this.MakeBackUpCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.MakeBackUpCheckbox.Location = new System.Drawing.Point(318, 51);
             this.MakeBackUpCheckbox.Name = "MakeBackUpCheckbox";
             this.MakeBackUpCheckbox.Size = new System.Drawing.Size(111, 19);
@@ -261,6 +380,9 @@
             this.SaveDataTabControl.ResumeLayout(false);
             this.GeneralStatsTabPage.ResumeLayout(false);
             this.GeneralStatsTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayTimeMinutesNumUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayTimeHoursNumUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GloryNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaccaNumUpDown)).EndInit();
             this.SaveDataGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -288,5 +410,14 @@
         private Label FirstNameLabel;
         private NumericUpDown MaccaNumUpDown;
         private Label MaccaLabel;
+        private NumericUpDown GloryNumUpDown;
+        private Label GloryLabel;
+        private Label PlayTimeLabel;
+        private Label MinutesLabel;
+        private NumericUpDown PlayTimeMinutesNumUpDown;
+        private Label HoursLabel;
+        private NumericUpDown PlayTimeHoursNumUpDown;
+        private Label DateSavedLabel;
+        private DateTimePicker DateSavedDateTimePicker;
     }
 }

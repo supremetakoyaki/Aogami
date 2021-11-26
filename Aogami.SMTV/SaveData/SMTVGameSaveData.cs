@@ -124,6 +124,11 @@ namespace Aogami.SMTV.SaveData
             return BitConverter.ToInt32(decryptedData, Offset);
         }
 
+        public long RetrieveInt64(int Offset)
+        {
+            return BitConverter.ToInt64(decryptedData, Offset);
+        }
+
         public uint RetrieveUInt32(int Offset)
         {
             return BitConverter.ToUInt32(decryptedData, Offset);
@@ -178,6 +183,19 @@ namespace Aogami.SMTV.SaveData
             decryptedData[Offset++] = int32Bytes[1];
             decryptedData[Offset++] = int32Bytes[2];
             decryptedData[Offset++] = int32Bytes[3];
+        }
+
+        public void UpdateInt64(int Offset, long Value)
+        {
+            byte[] int64Bytes = BitConverter.GetBytes(Value);
+            decryptedData[Offset++] = int64Bytes[0];
+            decryptedData[Offset++] = int64Bytes[1];
+            decryptedData[Offset++] = int64Bytes[2];
+            decryptedData[Offset++] = int64Bytes[3];
+            decryptedData[Offset++] = int64Bytes[4];
+            decryptedData[Offset++] = int64Bytes[5];
+            decryptedData[Offset++] = int64Bytes[6];
+            decryptedData[Offset++] = int64Bytes[7];
         }
 
         public void UpdateUInt32(int Offset, ushort Value)
