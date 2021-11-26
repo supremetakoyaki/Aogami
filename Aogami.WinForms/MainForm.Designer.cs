@@ -56,6 +56,8 @@
             this.ImportDecryptedDataButton = new System.Windows.Forms.Button();
             this.ExportDecryptedDataButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.DifficultyLabel = new System.Windows.Forms.Label();
+            this.DifficultyComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
             this.GeneralStatsTabPage.SuspendLayout();
@@ -108,6 +110,8 @@
             // 
             // GeneralStatsTabPage
             // 
+            this.GeneralStatsTabPage.Controls.Add(this.DifficultyComboBox);
+            this.GeneralStatsTabPage.Controls.Add(this.DifficultyLabel);
             this.GeneralStatsTabPage.Controls.Add(this.DateSavedDateTimePicker);
             this.GeneralStatsTabPage.Controls.Add(this.DateSavedLabel);
             this.GeneralStatsTabPage.Controls.Add(this.MinutesLabel);
@@ -359,6 +363,30 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // DifficultyLabel
+            // 
+            this.DifficultyLabel.AutoSize = true;
+            this.DifficultyLabel.Location = new System.Drawing.Point(229, 71);
+            this.DifficultyLabel.Name = "DifficultyLabel";
+            this.DifficultyLabel.Size = new System.Drawing.Size(58, 15);
+            this.DifficultyLabel.TabIndex = 16;
+            this.DifficultyLabel.Text = "Difficulty:";
+            // 
+            // DifficultyComboBox
+            // 
+            this.DifficultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DifficultyComboBox.FormattingEnabled = true;
+            this.DifficultyComboBox.Items.AddRange(new object[] {
+            "Safety",
+            "Casual",
+            "Normal",
+            "Hard"});
+            this.DifficultyComboBox.Location = new System.Drawing.Point(303, 69);
+            this.DifficultyComboBox.Name = "DifficultyComboBox";
+            this.DifficultyComboBox.Size = new System.Drawing.Size(82, 23);
+            this.DifficultyComboBox.TabIndex = 17;
+            this.DifficultyComboBox.SelectedIndexChanged += new System.EventHandler(this.DifficultyComboBox_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -419,5 +447,7 @@
         private NumericUpDown PlayTimeHoursNumUpDown;
         private Label DateSavedLabel;
         private DateTimePicker DateSavedDateTimePicker;
+        private ComboBox DifficultyComboBox;
+        private Label DifficultyLabel;
     }
 }

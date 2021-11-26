@@ -25,16 +25,20 @@ namespace Aogami.WinForms
             FirstNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.FirstName_a, 16, true);
             LastNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.LastName, 16, true);
 
-            long DateSaved = openedGameSaveData.RetrieveInt64(SMTVGameSaveDataOffsets.DateSaved);
-            if (DateSaved < 630823248000000000) DateSaved = 630823248000000000;
-            else if (DateSaved > 662379552000000000) DateSaved = 662379552000000000;
-            DateSavedDateTimePicker.Value = new(DateSaved, DateTimeKind.Local);
-
             int PlayTime = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.PlayTime);
             if (PlayTime < 0) PlayTime = 0;
             else if (PlayTime > 35999940) PlayTime = 35999940;
             PlayTimeHoursNumUpDown.Value = PlayTime / 3600;
             PlayTimeMinutesNumUpDown.Value = PlayTime / 60 % 60;
+
+            long DateSaved = openedGameSaveData.RetrieveInt64(SMTVGameSaveDataOffsets.DateSaved);
+            if (DateSaved < 630823248000000000) DateSaved = 630823248000000000;
+            else if (DateSaved > 662379552000000000) DateSaved = 662379552000000000;
+            DateSavedDateTimePicker.Value = new(DateSaved, DateTimeKind.Local);
+
+            int Difficulty = openedGameSaveData.RetrieveByte(SMTVGameSaveDataOffsets.GameDifficulty);
+            if (Difficulty < 0 || Difficulty > 3) Difficulty = 2;
+            DifficultyComboBox.SelectedIndex = Difficulty;
 
             int Macca = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.Macca);
             if (Macca < 0) Macca = 0;
@@ -208,6 +212,14 @@ namespace Aogami.WinForms
             if (openedGameSaveData == null || !readyForUserInput) return;
             readyForUserInput = false;
             openedGameSaveData.UpdateInt64(SMTVGameSaveDataOffsets.DateSaved, DateSavedDateTimePicker.Value.Ticks);
+            readyForUserInput = true;
+        }
+
+        private void DifficultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.GameDifficulty, (byte)DifficultyComboBox.SelectedIndex);
             readyForUserInput = true;
         }
     }
