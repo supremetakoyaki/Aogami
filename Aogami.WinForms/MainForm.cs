@@ -7,13 +7,28 @@ namespace Aogami.WinForms
     public partial class MainForm : Form
     {
         private SMTVGameSaveData? openedGameSaveData;
+        private bool readyForUserInput;
 
         public MainForm()
         {
             InitializeComponent();
             BitmapDrawer.DrawResourceOnPictureBox("Logo", LogoPictureBox, true);
             Size = new(333, 119);
-            DebugTestsButton.Visible = Debugger.IsAttached;
+            //DebugTestsButton.Visible = Debugger.IsAttached;
+            readyForUserInput = false;
+        }
+
+        private void SerializeSaveFileData()
+        {
+            if (openedGameSaveData == null) return;
+            readyForUserInput = false;
+            FirstNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.FirstName_a, 16, true);
+            LastNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.LastName, 16, true);
+
+            int Macca = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.Macca);
+            if (Macca < 0) Macca = 0;
+            MaccaNumUpDown.Value = Macca;
+            readyForUserInput = true;
         }
 
         private async void OpenSaveFileButton_Click(object sender, EventArgs e)
@@ -37,6 +52,7 @@ namespace Aogami.WinForms
                 Text = "Aogami — Shin Megami Tensei V Save Editor";
                 SaveChangesButton.Enabled = true;
                 Size = new(600, 420);
+                SerializeSaveFileData();
             }
         }
 
@@ -69,6 +85,7 @@ namespace Aogami.WinForms
             {
                 await openedGameSaveData.ExportDecryptedData(sfd.FileName);
                 MessageBox.Show("Your data has been exported successfully.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SerializeSaveFileData();
             }
         }
 
@@ -86,7 +103,7 @@ namespace Aogami.WinForms
         private void DebugTestsButton_Click(object sender, EventArgs e)
         {
             // I'm trying to read the game's files.
-            byte[] data = File.ReadAllBytes("DevilRace.uexp");
+            byte[] data = File.ReadAllBytes("CharacterName.uexp");
 
             System.Text.StringBuilder sb = new();
             int i = 231;
@@ -101,7 +118,7 @@ namespace Aogami.WinForms
                     strLen *= -1;
                     strLen -= 1;
                     str = System.Text.Encoding.ASCII.GetString(data, i + 4, strLen * 2).Replace("\0", "").Replace("\u0019", "");
-                    i += 495 + strLen;
+                    i += 486 + strLen;
                 }
                 else
                 {
@@ -113,6 +130,38 @@ namespace Aogami.WinForms
             }
 
             File.WriteAllText("output_test.out", sb.ToString());
+        }
+
+        private void FirstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            if (FirstNameTextBox.Text.Length > 8) FirstNameTextBox.Text = FirstNameTextBox.Text[..8];
+            if (LastNameTextBox.Text.Length > 8) LastNameTextBox.Text = LastNameTextBox.Text[..8];
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_a, FirstNameTextBox.Text);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_b, FirstNameTextBox.Text);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_c, FirstNameTextBox.Text);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FullName, $"{FirstNameTextBox.Text} {LastNameTextBox.Text}");
+            readyForUserInput = true;
+        }
+
+        private void LastNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            if (FirstNameTextBox.Text.Length > 8) FirstNameTextBox.Text = FirstNameTextBox.Text[..8];
+            if (LastNameTextBox.Text.Length > 8) LastNameTextBox.Text = LastNameTextBox.Text[..8];
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.LastName, LastNameTextBox.Text);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FullName, $"{FirstNameTextBox.Text} {LastNameTextBox.Text}");
+            readyForUserInput = true;
+        }
+
+        private void MaccaNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.Macca, (int)MaccaNumUpDown.Value);
+            readyForUserInput = true;
         }
     }
 }

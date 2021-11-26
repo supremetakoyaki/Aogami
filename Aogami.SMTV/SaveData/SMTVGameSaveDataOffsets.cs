@@ -7,7 +7,7 @@
         public const int FirstName_b = 2308;
         public const int FirstName_c = 2352;
         public const int LastName = 2332;
-        public const int FullName_a = 2372;
+        public const int FullName = 2372;
 
         // General
         public const int GameDifficulty = 1072;

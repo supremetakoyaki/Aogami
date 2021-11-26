@@ -102,9 +102,11 @@ namespace Aogami.SMTV.SaveData
             return decryptedData[Offset];
         }
 
-        public string RetrieveString(int Offset, int Length)
+        public string RetrieveString(int Offset, int Length, bool ValidateNameLength = false)
         {
-            return Encoding.ASCII.GetString(decryptedData, Offset, Length).Replace("\0", "");
+            string output = Encoding.ASCII.GetString(decryptedData, Offset, Length).Replace("\0", "");
+            if (ValidateNameLength && output.Length > Length / 2) output = output[..(Length / 2)];
+            return output;
         }
 
         public short RetrieveInt16(int Offset)

@@ -34,16 +34,23 @@
             this.SaveChangesButton = new System.Windows.Forms.Button();
             this.SaveDataTabControl = new System.Windows.Forms.TabControl();
             this.GeneralStatsTabPage = new System.Windows.Forms.TabPage();
+            this.MaccaNumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MaccaLabel = new System.Windows.Forms.Label();
+            this.LastNameTextBox = new System.Windows.Forms.TextBox();
+            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.LastNameLabel = new System.Windows.Forms.Label();
+            this.FirstNameLabel = new System.Windows.Forms.Label();
+            this.DebugTestsButton = new System.Windows.Forms.Button();
             this.ItemsTabPage = new System.Windows.Forms.TabPage();
             this.SaveDataGroupBox = new System.Windows.Forms.GroupBox();
             this.MakeBackUpCheckbox = new System.Windows.Forms.CheckBox();
             this.ImportDecryptedDataButton = new System.Windows.Forms.Button();
             this.ExportDecryptedDataButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.DebugTestsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
             this.GeneralStatsTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaccaNumUpDown)).BeginInit();
             this.SaveDataGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +96,12 @@
             // 
             // GeneralStatsTabPage
             // 
+            this.GeneralStatsTabPage.Controls.Add(this.MaccaNumUpDown);
+            this.GeneralStatsTabPage.Controls.Add(this.MaccaLabel);
+            this.GeneralStatsTabPage.Controls.Add(this.LastNameTextBox);
+            this.GeneralStatsTabPage.Controls.Add(this.FirstNameTextBox);
+            this.GeneralStatsTabPage.Controls.Add(this.LastNameLabel);
+            this.GeneralStatsTabPage.Controls.Add(this.FirstNameLabel);
             this.GeneralStatsTabPage.Controls.Add(this.DebugTestsButton);
             this.GeneralStatsTabPage.Location = new System.Drawing.Point(4, 24);
             this.GeneralStatsTabPage.Name = "GeneralStatsTabPage";
@@ -97,6 +110,79 @@
             this.GeneralStatsTabPage.TabIndex = 0;
             this.GeneralStatsTabPage.Text = "General";
             this.GeneralStatsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // MaccaNumUpDown
+            // 
+            this.MaccaNumUpDown.Location = new System.Drawing.Point(78, 69);
+            this.MaccaNumUpDown.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.MaccaNumUpDown.Name = "MaccaNumUpDown";
+            this.MaccaNumUpDown.Size = new System.Drawing.Size(90, 23);
+            this.MaccaNumUpDown.TabIndex = 6;
+            this.MaccaNumUpDown.ValueChanged += new System.EventHandler(this.MaccaNumUpDown_ValueChanged);
+            // 
+            // MaccaLabel
+            // 
+            this.MaccaLabel.AutoSize = true;
+            this.MaccaLabel.Location = new System.Drawing.Point(6, 71);
+            this.MaccaLabel.Name = "MaccaLabel";
+            this.MaccaLabel.Size = new System.Drawing.Size(45, 15);
+            this.MaccaLabel.TabIndex = 5;
+            this.MaccaLabel.Text = "Macca:";
+            // 
+            // LastNameTextBox
+            // 
+            this.LastNameTextBox.Location = new System.Drawing.Point(78, 40);
+            this.LastNameTextBox.MaxLength = 8;
+            this.LastNameTextBox.Name = "LastNameTextBox";
+            this.LastNameTextBox.Size = new System.Drawing.Size(90, 23);
+            this.LastNameTextBox.TabIndex = 4;
+            this.LastNameTextBox.TextChanged += new System.EventHandler(this.LastNameTextBox_TextChanged);
+            // 
+            // FirstNameTextBox
+            // 
+            this.FirstNameTextBox.Location = new System.Drawing.Point(78, 11);
+            this.FirstNameTextBox.MaxLength = 8;
+            this.FirstNameTextBox.Name = "FirstNameTextBox";
+            this.FirstNameTextBox.Size = new System.Drawing.Size(90, 23);
+            this.FirstNameTextBox.TabIndex = 3;
+            this.FirstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
+            // 
+            // LastNameLabel
+            // 
+            this.LastNameLabel.AutoSize = true;
+            this.LastNameLabel.Location = new System.Drawing.Point(6, 43);
+            this.LastNameLabel.Name = "LastNameLabel";
+            this.LastNameLabel.Size = new System.Drawing.Size(66, 15);
+            this.LastNameLabel.TabIndex = 2;
+            this.LastNameLabel.Text = "Last Name:";
+            // 
+            // FirstNameLabel
+            // 
+            this.FirstNameLabel.AutoSize = true;
+            this.FirstNameLabel.Location = new System.Drawing.Point(6, 14);
+            this.FirstNameLabel.Name = "FirstNameLabel";
+            this.FirstNameLabel.Size = new System.Drawing.Size(67, 15);
+            this.FirstNameLabel.TabIndex = 1;
+            this.FirstNameLabel.Text = "First Name:";
+            // 
+            // DebugTestsButton
+            // 
+            this.DebugTestsButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.DebugTestsButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.DebugTestsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DebugTestsButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.DebugTestsButton.Location = new System.Drawing.Point(459, 196);
+            this.DebugTestsButton.Name = "DebugTestsButton";
+            this.DebugTestsButton.Size = new System.Drawing.Size(75, 29);
+            this.DebugTestsButton.TabIndex = 0;
+            this.DebugTestsButton.Text = "Test";
+            this.DebugTestsButton.UseVisualStyleBackColor = false;
+            this.DebugTestsButton.Visible = false;
+            this.DebugTestsButton.Click += new System.EventHandler(this.DebugTestsButton_Click);
             // 
             // ItemsTabPage
             // 
@@ -154,20 +240,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // DebugTestsButton
-            // 
-            this.DebugTestsButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.DebugTestsButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.DebugTestsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DebugTestsButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DebugTestsButton.Location = new System.Drawing.Point(459, 196);
-            this.DebugTestsButton.Name = "DebugTestsButton";
-            this.DebugTestsButton.Size = new System.Drawing.Size(75, 29);
-            this.DebugTestsButton.TabIndex = 0;
-            this.DebugTestsButton.Text = "Do Tests";
-            this.DebugTestsButton.UseVisualStyleBackColor = false;
-            this.DebugTestsButton.Click += new System.EventHandler(this.DebugTestsButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -188,6 +260,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
             this.SaveDataTabControl.ResumeLayout(false);
             this.GeneralStatsTabPage.ResumeLayout(false);
+            this.GeneralStatsTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaccaNumUpDown)).EndInit();
             this.SaveDataGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -208,5 +282,11 @@
         private Button ExportDecryptedDataButton;
         private Button DebugTestsButton;
         private ImageList imageList1;
+        private TextBox LastNameTextBox;
+        private TextBox FirstNameTextBox;
+        private Label LastNameLabel;
+        private Label FirstNameLabel;
+        private NumericUpDown MaccaNumUpDown;
+        private Label MaccaLabel;
     }
 }
