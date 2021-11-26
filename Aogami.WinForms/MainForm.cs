@@ -1,5 +1,6 @@
 using Aogami.SMTV.SaveData;
 using Aogami.WinForms.Imaging;
+using System.Diagnostics;
 
 namespace Aogami.WinForms
 {
@@ -12,6 +13,7 @@ namespace Aogami.WinForms
             InitializeComponent();
             BitmapDrawer.DrawResourceOnPictureBox("Logo", LogoPictureBox, true);
             Size = new(333, 119);
+            DebugTestsButton.Visible = Debugger.IsAttached;
         }
 
         private async void OpenSaveFileButton_Click(object sender, EventArgs e)
@@ -79,6 +81,38 @@ namespace Aogami.WinForms
 
             if (makeBackUp && outCode != 4) MessageBox.Show("Changes saved successfully. However, I could not make a back-up because the original file was deleted somehow.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else MessageBox.Show("Changes saved successfully.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void DebugTestsButton_Click(object sender, EventArgs e)
+        {
+            // I'm trying to read the game's files.
+            byte[] data = File.ReadAllBytes("DevilRace.uexp");
+
+            System.Text.StringBuilder sb = new();
+            int i = 231;
+            int index = 0;
+            while (i < data.Length)
+            {
+                int strLen = BitConverter.ToInt32(data, i) - 1;
+                string str;
+
+                if (strLen < 0)
+                {
+                    strLen *= -1;
+                    strLen -= 1;
+                    str = System.Text.Encoding.ASCII.GetString(data, i + 4, strLen * 2).Replace("\0", "").Replace("\u0019", "");
+                    i += 495 + strLen;
+                }
+                else
+                {
+                    str = System.Text.Encoding.ASCII.GetString(data, i + 4, strLen);
+                    i += 470 + strLen;
+                }
+
+                sb.AppendLine($"{{ {index++}, \"{str}\" }},");
+            }
+
+            File.WriteAllText("output_test.out", sb.ToString());
         }
     }
 }

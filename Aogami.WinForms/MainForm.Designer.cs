@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.OpenSaveFileButton = new System.Windows.Forms.Button();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.SaveChangesButton = new System.Windows.Forms.Button();
@@ -38,8 +39,11 @@
             this.MakeBackUpCheckbox = new System.Windows.Forms.CheckBox();
             this.ImportDecryptedDataButton = new System.Windows.Forms.Button();
             this.ExportDecryptedDataButton = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.DebugTestsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
+            this.GeneralStatsTabPage.SuspendLayout();
             this.SaveDataGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +89,7 @@
             // 
             // GeneralStatsTabPage
             // 
+            this.GeneralStatsTabPage.Controls.Add(this.DebugTestsButton);
             this.GeneralStatsTabPage.Location = new System.Drawing.Point(4, 24);
             this.GeneralStatsTabPage.Name = "GeneralStatsTabPage";
             this.GeneralStatsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -143,6 +148,26 @@
             this.ExportDecryptedDataButton.UseVisualStyleBackColor = true;
             this.ExportDecryptedDataButton.Click += new System.EventHandler(this.ExportDecryptedDataButton_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // DebugTestsButton
+            // 
+            this.DebugTestsButton.BackColor = System.Drawing.Color.SteelBlue;
+            this.DebugTestsButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.DebugTestsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DebugTestsButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.DebugTestsButton.Location = new System.Drawing.Point(459, 196);
+            this.DebugTestsButton.Name = "DebugTestsButton";
+            this.DebugTestsButton.Size = new System.Drawing.Size(75, 29);
+            this.DebugTestsButton.TabIndex = 0;
+            this.DebugTestsButton.Text = "Do Tests";
+            this.DebugTestsButton.UseVisualStyleBackColor = false;
+            this.DebugTestsButton.Click += new System.EventHandler(this.DebugTestsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -162,6 +187,7 @@
             this.Text = "Aogami";
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
             this.SaveDataTabControl.ResumeLayout(false);
+            this.GeneralStatsTabPage.ResumeLayout(false);
             this.SaveDataGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -180,5 +206,7 @@
         private CheckBox MakeBackUpCheckbox;
         private Button ImportDecryptedDataButton;
         private Button ExportDecryptedDataButton;
+        private Button DebugTestsButton;
+        private ImageList imageList1;
     }
 }
