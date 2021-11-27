@@ -23,7 +23,7 @@ namespace Aogami.WinForms
             if (openedGameSaveData == null) return;
             readyForUserInput = false;
 
-            FirstNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.FirstName_a, 16, true);
+            FirstNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.FirstName, 16, true);
             LastNameTextBox.Text = openedGameSaveData.RetrieveString(SMTVGameSaveDataOffsets.LastName, 16, true);
 
             int PlayTime = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.PlayTime);
@@ -64,6 +64,43 @@ namespace Aogami.WinForms
                 ItemListDataGridView.Rows[itemRowIndex].Tag = itemIndex;
                 if (!ItemsShowUnusedCheckBox.Checked && itemName.StartsWith("NOT USED")) ItemListDataGridView.Rows[itemRowIndex].Visible = false;
             }
+
+            int NahobinoExp = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.NahobinoExp);
+            short NahobinoLevel = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoLevel);
+            short NahobinoHp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoHp);
+            short NahobinoMp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoMp);
+            short NahobinoStrength = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoStrength);
+            short NahobinoVitality = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoVitality);
+            short NahobinoMagic = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoMagic);
+            short NahobinoAgility = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoAgility);
+            short NahobinoLuck = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoLuck);
+            if (NahobinoExp < 0) NahobinoExp = 0;
+            if (NahobinoLevel < 1) NahobinoLevel = 1;
+            else if (NahobinoLevel > 99) NahobinoLevel = 99;
+            if (NahobinoHp < 0) NahobinoHp = 0;
+            else if (NahobinoHp > 9999) NahobinoHp = 9999;
+            if (NahobinoMp < 0) NahobinoMp = 0;
+            else if (NahobinoMp > 9999) NahobinoMp = 9999;
+            if (NahobinoStrength < 0) NahobinoStrength = 0;
+            else if (NahobinoStrength > 99) NahobinoStrength = 99;
+            if (NahobinoVitality < 0) NahobinoVitality = 0;
+            else if (NahobinoVitality > 99) NahobinoVitality = 99;
+            if (NahobinoMagic < 0) NahobinoMagic = 0;
+            else if (NahobinoMagic > 99) NahobinoMagic = 99;
+            if (NahobinoAgility < 0) NahobinoAgility = 0;
+            else if (NahobinoAgility > 99) NahobinoAgility = 99;
+            if (NahobinoLuck < 0) NahobinoLuck = 0;
+            else if (NahobinoLuck > 99) NahobinoLuck = 99;
+
+            NahobinoExperienceNumUpDown.Value = NahobinoExp;
+            NahobinoLevelNumUpDown.Value = NahobinoLevel;
+            NahobinoHpNumericUpDown.Value = NahobinoHp;
+            NahobinoMpNumericUpDown.Value = NahobinoMp;
+            StrengthNumUpDown.Value = NahobinoStrength;
+            VitalityNumUpDown.Value = NahobinoVitality;
+            MagicNumUpDown.Value = NahobinoMagic;
+            AgilityNumUpDown.Value = NahobinoAgility;
+            LuckNumUpDown.Value = NahobinoLuck;
 
             readyForUserInput = true;
         }
@@ -176,9 +213,9 @@ namespace Aogami.WinForms
             readyForUserInput = false;
             if (FirstNameTextBox.Text.Length > 8) FirstNameTextBox.Text = FirstNameTextBox.Text[..8];
             if (LastNameTextBox.Text.Length > 8) LastNameTextBox.Text = LastNameTextBox.Text[..8];
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_a, FirstNameTextBox.Text, 8);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_b, FirstNameTextBox.Text, 8);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName_c, FirstNameTextBox.Text, 8);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName, FirstNameTextBox.Text, 8);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName2, FirstNameTextBox.Text, 8);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName3, FirstNameTextBox.Text, 8);
             openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FullName, $"{FirstNameTextBox.Text} {LastNameTextBox.Text}", 20);
             readyForUserInput = true;
         }
@@ -335,6 +372,142 @@ namespace Aogami.WinForms
                 }
             }
 
+            readyForUserInput = true;
+        }
+
+        private void SetNahobinoToMaxButton_Click(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+
+            NahobinoExperienceNumUpDown.Value = NahobinoExperienceNumUpDown.Maximum;
+            NahobinoLevelNumUpDown.Value = NahobinoLevelNumUpDown.Maximum;
+            NahobinoHpNumericUpDown.Value = NahobinoHpNumericUpDown.Maximum;
+            NahobinoMpNumericUpDown.Value = NahobinoMpNumericUpDown.Maximum;
+            StrengthNumUpDown.Value = StrengthNumUpDown.Maximum;
+            VitalityNumUpDown.Value = VitalityNumUpDown.Maximum;
+            MagicNumUpDown.Value = MagicNumUpDown.Maximum;
+            AgilityNumUpDown.Value = AgilityNumUpDown.Maximum;
+            LuckNumUpDown.Value = LuckNumUpDown.Maximum;
+
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp, (int)NahobinoExperienceNumUpDown.Value);
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp2, (int)NahobinoExperienceNumUpDown.Value);
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp3, (int)NahobinoExperienceNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)NahobinoLevelNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)NahobinoLevelNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)NahobinoLevelNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)NahobinoHpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, (short)NahobinoHpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)NahobinoHpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)NahobinoMpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, (short)NahobinoMpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)NahobinoMpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, (short)StrengthNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, (short)VitalityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, (short)MagicNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, (short)AgilityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, (short)LuckNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
+
+            readyForUserInput = true;
+        }
+
+        private void NahobinoExperienceNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp, (int)NahobinoExperienceNumUpDown.Value);
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp2, (int)NahobinoExperienceNumUpDown.Value);
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp3, (int)NahobinoExperienceNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void NahobinoLevelNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)NahobinoLevelNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)NahobinoLevelNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)NahobinoLevelNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void NahobinoHpNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)NahobinoHpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, (short)NahobinoHpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)NahobinoHpNumericUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void NahobinoMpNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)NahobinoMpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, (short)NahobinoMpNumericUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)NahobinoMpNumericUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void StrengthNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, (short)StrengthNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void VitalityNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, (short)VitalityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void MagicNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, (short)MagicNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void AgilityNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, (short)AgilityNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
+            readyForUserInput = true;
+        }
+
+        private void LuckNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, (short)LuckNumUpDown.Value);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
             readyForUserInput = true;
         }
     }
