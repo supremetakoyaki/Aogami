@@ -1,3 +1,4 @@
+using Aogami.SMTV.GameData;
 using Aogami.SMTV.SaveData;
 using Aogami.WinForms.Imaging;
 
@@ -47,6 +48,22 @@ namespace Aogami.WinForms
             int Glory = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.Glory);
             if (Glory < 0) Glory = 0;
             GloryNumUpDown.Value = Glory;
+
+            ItemListDataGridView.Rows.Clear();
+            foreach (var kvp in SMTVItemCollection.ItemNames)
+            {
+                int itemIndex = kvp.Key;
+                string itemName = kvp.Value;
+                string itemType = SMTVItemType.GetItemType(itemIndex).ToString();
+                int itemAmount = openedGameSaveData.RetrieveByte(SMTVGameSaveDataOffsets.ItemOffset + itemIndex);
+                int itemRowIndex = ItemListDataGridView.Rows.Add();
+                ItemListDataGridView.Rows[itemRowIndex].Cells[0].Value = itemIndex;
+                ItemListDataGridView.Rows[itemRowIndex].Cells[1].Value = itemName;
+                ItemListDataGridView.Rows[itemRowIndex].Cells[2].Value = itemType;
+                ItemListDataGridView.Rows[itemRowIndex].Cells[3].Value = itemAmount;
+                ItemListDataGridView.Rows[itemRowIndex].Tag = itemIndex;
+                if (!ItemsShowUnusedCheckBox.Checked && itemName.StartsWith("NOT USED")) ItemListDataGridView.Rows[itemRowIndex].Visible = false;
+            }
 
             readyForUserInput = true;
         }
@@ -220,6 +237,104 @@ namespace Aogami.WinForms
             if (openedGameSaveData == null || !readyForUserInput) return;
             readyForUserInput = false;
             openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.GameDifficulty, (byte)DifficultyComboBox.SelectedIndex);
+            readyForUserInput = true;
+        }
+
+        private void ItemsShowUnusedCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+
+            bool showUnused = ItemsShowUnusedCheckBox.Checked;
+
+            foreach (DataGridViewRow itemRow in ItemListDataGridView.Rows)
+            {
+                string itemName = (string)itemRow.Cells[1].Value;
+                if (itemName.StartsWith("NOT USED")) itemRow.Visible = showUnused;
+            }
+
+            ItemListDataGridView.Refresh();
+            readyForUserInput = true;
+        }
+
+        private void ItemListDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new(ItemAmountColumn_KeyPress);
+            if (ItemListDataGridView.CurrentCell.ColumnIndex == 3)
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(ItemAmountColumn_KeyPress);
+                }
+            }
+        }
+
+        private void ItemAmountColumn_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ItemListDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput || e.ColumnIndex != 3) return;
+            readyForUserInput = false;
+
+            DataGridViewRow itemRow = ItemListDataGridView.Rows[e.RowIndex];
+            if (itemRow.Tag is int itemIndex)
+            {
+                if (int.TryParse(itemRow.Cells[3].Value.ToString(), out int itemAmount))
+                {
+                    if (itemAmount < 0) itemAmount = 0;
+                    else if (itemAmount > 255) itemAmount = 255;
+                }
+
+                itemRow.Cells[3].Value = itemAmount;
+                openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.ItemOffset + itemIndex, (byte)itemAmount);
+            }
+
+            readyForUserInput = true;
+        }
+
+        private void ItemsSetAllTo99Button_Click(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+
+            foreach (DataGridViewRow itemRow in ItemListDataGridView.Rows)
+            {
+                if (itemRow.Tag is int itemIndex)
+                {
+                    if (itemRow.Cells[1].Value.ToString() is string itemName && !itemName.StartsWith("NOT USED"))
+                    {
+                        itemRow.Cells[3].Value = 99;
+                        openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.ItemOffset + itemIndex, 99);
+                    }
+                }
+            }
+
+            readyForUserInput = true;
+        }
+
+        private void ItemsSetAllTo255Button_Click(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+
+            foreach (DataGridViewRow itemRow in ItemListDataGridView.Rows)
+            {
+                if (itemRow.Tag is int itemIndex)
+                {
+                    if (itemRow.Cells[1].Value.ToString() is string itemName && !itemName.StartsWith("NOT USED"))
+                    {
+                        itemRow.Cells[3].Value = 255;
+                        openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.ItemOffset + itemIndex, 255);
+                    }
+                }
+            }
+
             readyForUserInput = true;
         }
     }

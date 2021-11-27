@@ -34,6 +34,8 @@
             this.SaveChangesButton = new System.Windows.Forms.Button();
             this.SaveDataTabControl = new System.Windows.Forms.TabControl();
             this.GeneralStatsTabPage = new System.Windows.Forms.TabPage();
+            this.DifficultyComboBox = new System.Windows.Forms.ComboBox();
+            this.DifficultyLabel = new System.Windows.Forms.Label();
             this.DateSavedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DateSavedLabel = new System.Windows.Forms.Label();
             this.MinutesLabel = new System.Windows.Forms.Label();
@@ -51,13 +53,19 @@
             this.FirstNameLabel = new System.Windows.Forms.Label();
             this.DebugTestsButton = new System.Windows.Forms.Button();
             this.ItemsTabPage = new System.Windows.Forms.TabPage();
+            this.ItemsShowUnusedCheckBox = new System.Windows.Forms.CheckBox();
+            this.ItemsSetAllTo99Button = new System.Windows.Forms.Button();
+            this.ItemsSetAllTo255Button = new System.Windows.Forms.Button();
+            this.ItemListDataGridView = new System.Windows.Forms.DataGridView();
+            this.ItemIndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveDataGroupBox = new System.Windows.Forms.GroupBox();
             this.MakeBackUpCheckbox = new System.Windows.Forms.CheckBox();
             this.ImportDecryptedDataButton = new System.Windows.Forms.Button();
             this.ExportDecryptedDataButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.DifficultyLabel = new System.Windows.Forms.Label();
-            this.DifficultyComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
             this.GeneralStatsTabPage.SuspendLayout();
@@ -65,6 +73,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayTimeHoursNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GloryNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaccaNumUpDown)).BeginInit();
+            this.ItemsTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemListDataGridView)).BeginInit();
             this.SaveDataGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,6 +145,30 @@
             this.GeneralStatsTabPage.TabIndex = 0;
             this.GeneralStatsTabPage.Text = "General";
             this.GeneralStatsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // DifficultyComboBox
+            // 
+            this.DifficultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DifficultyComboBox.FormattingEnabled = true;
+            this.DifficultyComboBox.Items.AddRange(new object[] {
+            "Safety",
+            "Casual",
+            "Normal",
+            "Hard"});
+            this.DifficultyComboBox.Location = new System.Drawing.Point(303, 69);
+            this.DifficultyComboBox.Name = "DifficultyComboBox";
+            this.DifficultyComboBox.Size = new System.Drawing.Size(82, 23);
+            this.DifficultyComboBox.TabIndex = 17;
+            this.DifficultyComboBox.SelectedIndexChanged += new System.EventHandler(this.DifficultyComboBox_SelectedIndexChanged);
+            // 
+            // DifficultyLabel
+            // 
+            this.DifficultyLabel.AutoSize = true;
+            this.DifficultyLabel.Location = new System.Drawing.Point(229, 71);
+            this.DifficultyLabel.Name = "DifficultyLabel";
+            this.DifficultyLabel.Size = new System.Drawing.Size(58, 15);
+            this.DifficultyLabel.TabIndex = 16;
+            this.DifficultyLabel.Text = "Difficulty:";
             // 
             // DateSavedDateTimePicker
             // 
@@ -307,6 +341,10 @@
             // 
             // ItemsTabPage
             // 
+            this.ItemsTabPage.Controls.Add(this.ItemsShowUnusedCheckBox);
+            this.ItemsTabPage.Controls.Add(this.ItemsSetAllTo99Button);
+            this.ItemsTabPage.Controls.Add(this.ItemsSetAllTo255Button);
+            this.ItemsTabPage.Controls.Add(this.ItemListDataGridView);
             this.ItemsTabPage.Location = new System.Drawing.Point(4, 24);
             this.ItemsTabPage.Name = "ItemsTabPage";
             this.ItemsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -314,6 +352,94 @@
             this.ItemsTabPage.TabIndex = 1;
             this.ItemsTabPage.Text = "Items";
             this.ItemsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ItemsShowUnusedCheckBox
+            // 
+            this.ItemsShowUnusedCheckBox.AutoSize = true;
+            this.ItemsShowUnusedCheckBox.Location = new System.Drawing.Point(6, 205);
+            this.ItemsShowUnusedCheckBox.Name = "ItemsShowUnusedCheckBox";
+            this.ItemsShowUnusedCheckBox.Size = new System.Drawing.Size(129, 19);
+            this.ItemsShowUnusedCheckBox.TabIndex = 3;
+            this.ItemsShowUnusedCheckBox.Text = "Show unused items";
+            this.ItemsShowUnusedCheckBox.UseVisualStyleBackColor = true;
+            this.ItemsShowUnusedCheckBox.CheckedChanged += new System.EventHandler(this.ItemsShowUnusedCheckBox_CheckedChanged);
+            // 
+            // ItemsSetAllTo99Button
+            // 
+            this.ItemsSetAllTo99Button.BackColor = System.Drawing.Color.MintCream;
+            this.ItemsSetAllTo99Button.Location = new System.Drawing.Point(328, 202);
+            this.ItemsSetAllTo99Button.Name = "ItemsSetAllTo99Button";
+            this.ItemsSetAllTo99Button.Size = new System.Drawing.Size(100, 23);
+            this.ItemsSetAllTo99Button.TabIndex = 2;
+            this.ItemsSetAllTo99Button.Text = "Set All To 99";
+            this.ItemsSetAllTo99Button.UseVisualStyleBackColor = false;
+            this.ItemsSetAllTo99Button.Click += new System.EventHandler(this.ItemsSetAllTo99Button_Click);
+            // 
+            // ItemsSetAllTo255Button
+            // 
+            this.ItemsSetAllTo255Button.BackColor = System.Drawing.Color.Ivory;
+            this.ItemsSetAllTo255Button.Location = new System.Drawing.Point(434, 202);
+            this.ItemsSetAllTo255Button.Name = "ItemsSetAllTo255Button";
+            this.ItemsSetAllTo255Button.Size = new System.Drawing.Size(100, 23);
+            this.ItemsSetAllTo255Button.TabIndex = 1;
+            this.ItemsSetAllTo255Button.Text = "Set All To 255";
+            this.ItemsSetAllTo255Button.UseVisualStyleBackColor = false;
+            this.ItemsSetAllTo255Button.Click += new System.EventHandler(this.ItemsSetAllTo255Button_Click);
+            // 
+            // ItemListDataGridView
+            // 
+            this.ItemListDataGridView.AllowUserToAddRows = false;
+            this.ItemListDataGridView.AllowUserToDeleteRows = false;
+            this.ItemListDataGridView.AllowUserToResizeColumns = false;
+            this.ItemListDataGridView.AllowUserToResizeRows = false;
+            this.ItemListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemIndexColumn,
+            this.ItemNameColumn,
+            this.ItemTypeColumn,
+            this.ItemAmountColumn});
+            this.ItemListDataGridView.Location = new System.Drawing.Point(6, 6);
+            this.ItemListDataGridView.MultiSelect = false;
+            this.ItemListDataGridView.Name = "ItemListDataGridView";
+            this.ItemListDataGridView.RowHeadersVisible = false;
+            this.ItemListDataGridView.RowTemplate.Height = 25;
+            this.ItemListDataGridView.ShowEditingIcon = false;
+            this.ItemListDataGridView.Size = new System.Drawing.Size(528, 190);
+            this.ItemListDataGridView.TabIndex = 0;
+            this.ItemListDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemListDataGridView_CellValueChanged);
+            this.ItemListDataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.ItemListDataGridView_EditingControlShowing);
+            // 
+            // ItemIndexColumn
+            // 
+            this.ItemIndexColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemIndexColumn.FillWeight = 25F;
+            this.ItemIndexColumn.HeaderText = "Index";
+            this.ItemIndexColumn.MinimumWidth = 10;
+            this.ItemIndexColumn.Name = "ItemIndexColumn";
+            // 
+            // ItemNameColumn
+            // 
+            this.ItemNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemNameColumn.HeaderText = "Name";
+            this.ItemNameColumn.MinimumWidth = 50;
+            this.ItemNameColumn.Name = "ItemNameColumn";
+            this.ItemNameColumn.ReadOnly = true;
+            // 
+            // ItemTypeColumn
+            // 
+            this.ItemTypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemTypeColumn.FillWeight = 60F;
+            this.ItemTypeColumn.HeaderText = "Type";
+            this.ItemTypeColumn.MinimumWidth = 25;
+            this.ItemTypeColumn.Name = "ItemTypeColumn";
+            this.ItemTypeColumn.ReadOnly = true;
+            // 
+            // ItemAmountColumn
+            // 
+            this.ItemAmountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemAmountColumn.FillWeight = 26F;
+            this.ItemAmountColumn.HeaderText = "Amount";
+            this.ItemAmountColumn.Name = "ItemAmountColumn";
             // 
             // SaveDataGroupBox
             // 
@@ -363,30 +489,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // DifficultyLabel
-            // 
-            this.DifficultyLabel.AutoSize = true;
-            this.DifficultyLabel.Location = new System.Drawing.Point(229, 71);
-            this.DifficultyLabel.Name = "DifficultyLabel";
-            this.DifficultyLabel.Size = new System.Drawing.Size(58, 15);
-            this.DifficultyLabel.TabIndex = 16;
-            this.DifficultyLabel.Text = "Difficulty:";
-            // 
-            // DifficultyComboBox
-            // 
-            this.DifficultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DifficultyComboBox.FormattingEnabled = true;
-            this.DifficultyComboBox.Items.AddRange(new object[] {
-            "Safety",
-            "Casual",
-            "Normal",
-            "Hard"});
-            this.DifficultyComboBox.Location = new System.Drawing.Point(303, 69);
-            this.DifficultyComboBox.Name = "DifficultyComboBox";
-            this.DifficultyComboBox.Size = new System.Drawing.Size(82, 23);
-            this.DifficultyComboBox.TabIndex = 17;
-            this.DifficultyComboBox.SelectedIndexChanged += new System.EventHandler(this.DifficultyComboBox_SelectedIndexChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -412,6 +514,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayTimeHoursNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GloryNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaccaNumUpDown)).EndInit();
+            this.ItemsTabPage.ResumeLayout(false);
+            this.ItemsTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemListDataGridView)).EndInit();
             this.SaveDataGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -449,5 +554,13 @@
         private DateTimePicker DateSavedDateTimePicker;
         private ComboBox DifficultyComboBox;
         private Label DifficultyLabel;
+        private Button ItemsSetAllTo99Button;
+        private Button ItemsSetAllTo255Button;
+        private DataGridView ItemListDataGridView;
+        private DataGridViewTextBoxColumn ItemIndexColumn;
+        private DataGridViewTextBoxColumn ItemNameColumn;
+        private DataGridViewTextBoxColumn ItemTypeColumn;
+        private DataGridViewTextBoxColumn ItemAmountColumn;
+        private CheckBox ItemsShowUnusedCheckBox;
     }
 }
