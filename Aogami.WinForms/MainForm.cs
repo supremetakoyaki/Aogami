@@ -1,6 +1,7 @@
 using Aogami.SMTV.GameData;
 using Aogami.SMTV.SaveData;
 using Aogami.WinForms.Imaging;
+using System.Diagnostics;
 
 namespace Aogami.WinForms
 {
@@ -14,7 +15,7 @@ namespace Aogami.WinForms
             InitializeComponent();
             BitmapDrawer.DrawResourceOnPictureBox("Logo", LogoPictureBox, true);
             Size = new(333, 119);
-            //DebugTestsButton.Visible = Debugger.IsAttached;
+            DebugTestsButton.Visible = Debugger.IsAttached;
             readyForUserInput = false;
         }
 
@@ -178,7 +179,7 @@ namespace Aogami.WinForms
         private void DebugTestsButton_Click(object sender, EventArgs e)
         {
             // I'm trying to read the game's files.
-            byte[] data = File.ReadAllBytes("CharacterName.uexp");
+            byte[] data = File.ReadAllBytes("SkillName.uexp");
 
             System.Text.StringBuilder sb = new();
             int i = 231;
