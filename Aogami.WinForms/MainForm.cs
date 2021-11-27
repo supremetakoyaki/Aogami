@@ -14,9 +14,17 @@ namespace Aogami.WinForms
         {
             InitializeComponent();
             BitmapDrawer.DrawResourceOnPictureBox("Logo", LogoPictureBox, true);
-            Size = new(333, 119);
+            ChangeFormSize(333, 119);
             DebugTestsButton.Visible = Debugger.IsAttached;
             readyForUserInput = false;
+        }
+
+        private void ChangeFormSize(int width, int height)
+        {
+            float ScaleFactor = DeviceDpi / 96f;
+            width = (int)Math.Floor(width * ScaleFactor);
+            height = (int)Math.Floor(height * ScaleFactor);
+            Size = new(width, height);
         }
 
         private void SerializeSaveFileData()
@@ -120,13 +128,13 @@ namespace Aogami.WinForms
                     MessageBox.Show("It looks like this is not a valid save file. Make sure you try to open an encrypted, 388KB Shin Megami Tensei V save file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Text = "Aogami";
                     SaveChangesButton.Enabled = false;
-                    Size = new(333, 119);
+                    ChangeFormSize(333, 119);
                     return;
                 }
 
                 Text = "Aogami — Shin Megami Tensei V Save Editor";
                 SaveChangesButton.Enabled = true;
-                Size = new(600, 420);
+                ChangeFormSize(600, 420);
                 SerializeSaveFileData();
             }
         }
