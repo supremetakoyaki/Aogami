@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Devil103" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil103.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil104" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil104.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil105" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil105.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil106" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil106.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil11.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil111" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil111.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil112" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil112.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil113" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil113.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil114" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil114.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil115" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil115.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil116" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil116.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil119" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil119.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil12.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil120" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil120.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil121" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil121.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil126" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil126.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil127" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil127.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil128.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil129" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil129.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil13.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil134" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil134.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil135" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil135.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil136" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil136.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil137" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil137.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil138" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil138.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil139" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil139.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil14.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil140" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil140.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil144" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil144.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil145" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil145.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil146" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil146.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil147" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil147.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil15.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil152" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil152.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil155" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil155.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil156" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil156.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil157" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil157.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil158" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil158.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil16.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil163" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil163.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil164" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil164.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil165" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil165.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil166" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil166.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil17.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil171" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil171.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil172" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil172.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil173" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil173.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil178" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil178.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil179" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil179.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil180.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil181" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil181.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil182" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil182.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil183" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil183.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil188" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil188.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil189" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil189.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil19.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil190" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil190.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil191" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil191.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil192" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil192.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil193" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil193.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil194" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil194.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil195" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil195.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil197" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil197.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil198" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil198.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil20.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil200.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil201" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil201.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil202" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil202.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil203" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil203.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil204" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil204.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil205" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil205.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil206" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil206.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil21.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil211" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil211.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil212" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil212.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil213" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil213.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil214" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil214.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil215" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil215.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil216" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil216.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil22.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil221" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil221.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil222" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil222.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil223" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil223.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil224" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil224.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil225" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil225.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil23.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil231" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil231.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil232" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil232.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil233" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil233.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil234" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil234.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil235" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil235.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil236" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil236.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil24.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil240" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil240.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil241.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil242" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil242.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil243" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil243.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil244" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil244.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil245" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil245.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil246" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil246.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil247" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil247.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil248" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil248.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil249" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil249.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil25.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil254" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil254.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil255" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil255.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil256.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil257" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil257.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil258" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil258.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil259" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil259.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil26" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil26.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil264" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil264.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil265" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil265.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil266" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil266.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil267" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil267.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil268" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil268.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil269" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil269.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil27" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil27.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil270" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil270.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil271" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil271.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil272" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil272.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil273" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil273.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil278" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil278.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil279" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil279.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil28.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil280.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil281" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil281.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil282" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil282.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil283" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil283.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil287" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil287.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil288" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil288.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil289" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil289.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil29" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil29.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil290" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil290.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil295" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil295.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil296" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil296.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil297" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil297.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil298" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil298.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil299" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil299.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil30.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil300.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil301" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil301.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil302" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil302.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil303" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil303.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil304" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil304.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil305" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil305.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil31.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil310" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil310.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil311" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil311.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil312" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil312.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil313" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil313.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil314" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil314.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil315" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil315.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil316" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil316.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil317" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil317.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil318" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil318.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil322" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil322.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil323" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil323.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil324" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil324.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil325" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil325.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil326" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil326.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil330" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil330.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil331" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil331.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil332" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil332.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil333" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil333.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil334" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil334.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil335" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil335.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil336" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil336.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil34" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil34.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil341" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil341.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil342" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil342.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil343" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil343.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil344" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil344.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil345" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil345.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil35" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil35.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil350" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil350.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil351" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil351.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil352" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil352.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil353" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil353.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil354" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil354.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil355" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil355.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil356" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil356.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil357" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil357.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil358" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil358.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil359" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil359.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil36.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil369" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil369.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil37" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil37.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil370" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil370.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil371" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil371.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil372" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil372.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil375" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil375.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil377" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil377.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil378" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil378.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil38" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil38.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil380" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil380.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil383" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil383.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil385" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil385.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil386" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil386.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil387" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil387.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil388" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil388.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil389" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil389.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil390" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil390.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil391" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil391.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil392" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil392.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil393" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil393.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil394" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil394.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil395" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil395.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil396" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil396.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil397" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil397.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil42" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil42.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil43" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil43.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil44" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil44.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil45" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil45.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil51" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil51.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil52.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil53" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil53.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil54" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil54.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil55.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil56" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil56.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil57" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil57.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil58" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil58.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil59" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil59.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil64.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil65" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil65.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil66" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil66.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil67" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil67.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil68" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil68.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil69" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil69.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil7.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil70.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil71" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil71.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil72" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil72.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil75" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil75.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil76" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil76.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil77" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil77.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil78" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil78.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil79" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil79.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil8.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil80.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil81" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil81.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil82" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil82.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil83" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil83.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil84" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil84.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil85" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil85.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil86" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil86.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil87" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil87.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil88" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil88.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil89" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil89.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil9.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil94" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil94.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil95" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil95.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil96.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil97" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil97.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Devil98" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Sprites\Devil98.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
