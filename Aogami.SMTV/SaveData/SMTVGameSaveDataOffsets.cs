@@ -49,5 +49,31 @@
         public const int NahobinoLuck = 2248; // short
         public const int NahobinoLuck2 = 2264; // short
         public const int NahobinoLuck3 = 2280; // short
+
+        // Demon Stats. +392
+        public const int DemonExp = 2780; // int
+        public const int DemonLevel = 2788; // short
+        public const int DemonId = 2790; // short
+        public const int DemonHp = 2708; // short
+        public const int DemonHp2 = 2740; // short
+        public const int DemonHp3 = 2776; // short
+        public const int DemonMp = 2710; // short
+        public const int DemonMp2 = 2742; // short
+        public const int DemonMp3 = 2778; // short
+        public const int DemonStrength = 2712; // short
+        public const int DemonStrength2 = 2744; // short
+        public const int DemonStrength3 = 2760; // short
+        public const int DemonVitality = 2714; // short
+        public const int DemonVitality2 = 2746; // short
+        public const int DemonVitality3 = 2762; // short
+        public const int DemonMagic = 2716; // short
+        public const int DemonMagic2 = 2748; // short
+        public const int DemonMagic3 = 2764; // short
+        public const int DemonAgility = 2718; // short
+        public const int DemonAgility2 = 2750; // short
+        public const int DemonAgility3 = 2766; // short
+        public const int DemonLuck = 2720; // short
+        public const int DemonLuck2 = 2752; // short
+        public const int DemonLuck3 = 2768; // short
     }
 }
