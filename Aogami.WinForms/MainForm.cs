@@ -595,7 +595,7 @@ namespace Aogami.WinForms
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
-                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (short)DemonLevelNumUpDown.Value);
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (short)DemonExperienceNumUpDown.Value);
             }
             readyForUserInput = true;
         }
@@ -616,6 +616,7 @@ namespace Aogami.WinForms
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum, (short)DemonLevelNumUpDown.Value);;
             }
+            readyForUserInput = true;
         }
 
         private void DemonHpNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -635,6 +636,7 @@ namespace Aogami.WinForms
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, 0);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, (short)DemonHpNumericUpDown.Value);
             }
+            readyForUserInput = true;
         }
 
         private void DemonMpNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -654,6 +656,7 @@ namespace Aogami.WinForms
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, 0);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, (short)DemonMpNumericUpDown.Value);
             }
+            readyForUserInput = true;
         }
 
         private void StrengthNumUpDown_ValueChanged(object sender, EventArgs e)
@@ -673,6 +676,7 @@ namespace Aogami.WinForms
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, 0);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, (short)StrengthNumUpDown.Value);
             }
+            readyForUserInput = true;
         }
 
         private void VitalityNumUpDown_ValueChanged(object sender, EventArgs e)
