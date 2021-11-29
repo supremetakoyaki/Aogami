@@ -595,7 +595,7 @@ namespace Aogami.WinForms
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
-                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (short)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (int)DemonExperienceNumUpDown.Value);
             }
             readyForUserInput = true;
         }
