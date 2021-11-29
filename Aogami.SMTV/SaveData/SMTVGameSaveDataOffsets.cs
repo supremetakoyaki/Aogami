@@ -9,6 +9,11 @@
         public const int LastName = 2332;
         public const int FullName = 2372; // FirstName {space} LastName
 
+        // Title
+        public const int NahobinoTitleLevel = 1084; // int
+        public const int DemonTitleId = 1088; //int. There are two more.
+        public const int DemonTitleLevel = 1092; //int. There are two more.
+
         // General
         public const int DateSaved = 1064; // long
         public const int GameDifficulty = 1072;

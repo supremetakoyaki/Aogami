@@ -525,6 +525,7 @@ namespace Aogami.WinForms
                 openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp, (int)DemonExperienceNumUpDown.Value);
                 openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp2, (int)DemonExperienceNumUpDown.Value);
                 openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp3, (int)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoTitleLevel, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)DemonLevelNumUpDown.Value);
@@ -605,6 +606,7 @@ namespace Aogami.WinForms
             readyForUserInput = false;
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoTitleLevel, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)DemonLevelNumUpDown.Value);
