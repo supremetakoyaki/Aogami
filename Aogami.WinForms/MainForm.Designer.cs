@@ -562,7 +562,7 @@
             // 
             this.DemonNameColumn.DisplayIndex = 1;
             this.DemonNameColumn.Text = "Name";
-            this.DemonNameColumn.Width = 190;
+            this.DemonNameColumn.Width = 180;
             // 
             // DemonNoColumn
             // 
