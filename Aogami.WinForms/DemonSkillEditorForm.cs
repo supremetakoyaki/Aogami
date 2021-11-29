@@ -94,8 +94,8 @@ namespace Aogami.WinForms
             if (SpecificDemonSkillsListView.SelectedItems.Count != 1) return;
 
             ListViewItem skillItemToRemove = SpecificDemonSkillsListView.SelectedItems[0];
-            AllSkillsListView.Items.Add(skillItemToRemove);
             SpecificDemonSkillsListView.Items.Remove(skillItemToRemove);
+            AllSkillsListView.Items.Add(skillItemToRemove);
 
             if (!AddSkillToDemonButton.Enabled) AddSkillToDemonButton.Enabled = true;
         }
