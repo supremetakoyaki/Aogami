@@ -16,6 +16,7 @@ namespace Aogami.WinForms
             BitmapDrawer.DrawResourceOnPictureBox("Logo", LogoPictureBox, true);
             ChangeFormSize(333, 119);
             DebugTestsButton.Visible = Debugger.IsAttached;
+            SerializeDemonControls();
             readyForUserInput = false;
         }
 
@@ -25,6 +26,25 @@ namespace Aogami.WinForms
             width = (int)Math.Floor(width * ScaleFactor);
             height = (int)Math.Floor(height * ScaleFactor);
             Size = new(width, height);
+        }
+
+        private void SerializeDemonControls()
+        {
+            for (int i = 7; i < 398; i++)
+            {
+                string spriteKey = $"Devil{i}";
+                if (SMTVSpriteUtil.GetSprite(spriteKey) is Bitmap demonSprite)
+                {
+                    DemonImageList.Images.Add(spriteKey, demonSprite);
+                }
+            }
+
+            DemonStockListView.SmallImageList = DemonImageList;
+            
+            for (int i = 0; i < 245; i++)
+            {
+                DemonTypeComboBox.Items.Add(SMTVDemonCollection.DemonList[i].CharacterName);
+            }
         }
 
         private void SerializeSaveFileData()
@@ -74,44 +94,140 @@ namespace Aogami.WinForms
                 if (!ItemsShowUnusedCheckBox.Checked && itemName.StartsWith("NOT USED")) ItemListDataGridView.Rows[itemRowIndex].Visible = false;
             }
 
+            DemonStockListView.Items.Clear();
+            ListViewItem nahobinoItem = new(new string[] { "Nahobino", "0" });
+            nahobinoItem.ImageKey = "Devil370";
+            nahobinoItem.Tag = 0;
+            DemonStockListView.Items.Add(nahobinoItem);
+
+            for (int i = 0; i < 24; i++)
+            {
+                short demonId = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonId + (i * 392));
+                string demonName = "(empty)";
+                string demonSprite = string.Empty;
+
+                if (demonId != -1)
+                {
+                    SMTVDemon? demonObject = SMTVDemonCollection.DemonList.Values.FirstOrDefault(d => d.DevilId == demonId);
+                    if (demonObject != null)
+                    {
+                        demonSprite = $"Devil{demonObject.SpriteId}";
+                        demonName = demonObject.CharacterName;
+                    }
+                    else
+                    {
+                        demonName = "(Unknown)";
+                    }
+                }
+
+                ListViewItem demonItem = new(new string[] { demonName, (i + 1).ToString() });
+                demonItem.Tag = i + 1;
+                demonItem.ImageKey = demonSprite;
+                DemonStockListView.Items.Add(demonItem);
+            }
+            DemonStockListView.Items[0].Selected = true;
+
+            readyForUserInput = true;
+        }
+
+        private void SerializeNahobino()
+        {
+            if (openedGameSaveData == null) return;
+
             int NahobinoExp = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.NahobinoExp);
             short NahobinoLevel = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoLevel);
-            short NahobinoHp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoHp);
-            short NahobinoMp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoMp);
-            short NahobinoStrength = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoStrength);
-            short NahobinoVitality = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoVitality);
-            short NahobinoMagic = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoMagic);
-            short NahobinoAgility = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoAgility);
-            short NahobinoLuck = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoLuck);
+            short NahobinoHp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoHp3);
+            short NahobinoMp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoMp3);
+            short NahobinoStrength = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoStrength3);
+            short NahobinoVitality = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoVitality3);
+            short NahobinoMagic = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoMagic3);
+            short NahobinoAgility = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoAgility3);
+            short NahobinoLuck = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.NahobinoLuck3);
             if (NahobinoExp < 0) NahobinoExp = 0;
             if (NahobinoLevel < 1) NahobinoLevel = 1;
-            else if (NahobinoLevel > 99) NahobinoLevel = 99;
+            else if (NahobinoLevel > 999) NahobinoLevel = 999;
             if (NahobinoHp < 0) NahobinoHp = 0;
             else if (NahobinoHp > 9999) NahobinoHp = 9999;
             if (NahobinoMp < 0) NahobinoMp = 0;
             else if (NahobinoMp > 9999) NahobinoMp = 9999;
             if (NahobinoStrength < 0) NahobinoStrength = 0;
-            else if (NahobinoStrength > 99) NahobinoStrength = 99;
+            else if (NahobinoStrength > 999) NahobinoStrength = 999;
             if (NahobinoVitality < 0) NahobinoVitality = 0;
-            else if (NahobinoVitality > 99) NahobinoVitality = 99;
+            else if (NahobinoVitality > 999) NahobinoVitality = 999;
             if (NahobinoMagic < 0) NahobinoMagic = 0;
-            else if (NahobinoMagic > 99) NahobinoMagic = 99;
+            else if (NahobinoMagic > 999) NahobinoMagic = 999;
             if (NahobinoAgility < 0) NahobinoAgility = 0;
-            else if (NahobinoAgility > 99) NahobinoAgility = 99;
+            else if (NahobinoAgility > 999) NahobinoAgility = 999;
             if (NahobinoLuck < 0) NahobinoLuck = 0;
-            else if (NahobinoLuck > 99) NahobinoLuck = 99;
+            else if (NahobinoLuck > 999) NahobinoLuck = 999;
 
-            NahobinoExperienceNumUpDown.Value = NahobinoExp;
-            NahobinoLevelNumUpDown.Value = NahobinoLevel;
-            NahobinoHpNumericUpDown.Value = NahobinoHp;
-            NahobinoMpNumericUpDown.Value = NahobinoMp;
+            DemonTypeComboBox.Visible = false;
+            DemonClearButton.Visible = false;
+            DemonExperienceNumUpDown.Value = NahobinoExp;
+            DemonLevelNumUpDown.Value = NahobinoLevel;
+            DemonHpNumericUpDown.Value = NahobinoHp;
+            DemonMpNumericUpDown.Value = NahobinoMp;
             StrengthNumUpDown.Value = NahobinoStrength;
             VitalityNumUpDown.Value = NahobinoVitality;
             MagicNumUpDown.Value = NahobinoMagic;
             AgilityNumUpDown.Value = NahobinoAgility;
             LuckNumUpDown.Value = NahobinoLuck;
+        }
 
-            readyForUserInput = true;
+        private void SerializeDemon(int demonIndex)
+        {
+            if (openedGameSaveData == null) return;
+
+            int offsetSum = (demonIndex - 1) * 392;
+            short DemonId = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonId + offsetSum);
+            int DemonExp = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum);
+            short DemonLevel = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum);
+            short DemonHp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum);
+            short DemonMp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum);
+            short DemonStrength = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum);
+            short DemonVitality = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonVitality3 + offsetSum);
+            short DemonMagic = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonMagic3 + offsetSum);
+            short DemonAgility = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonAgility3 + offsetSum);
+            short DemonLuck = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonLuck3 + offsetSum);
+
+            if (DemonExp < 0) DemonExp = 0;
+            if (DemonLevel < 1) DemonLevel = 1;
+            else if (DemonLevel > 99) DemonLevel = 99;
+            if (DemonHp < 0) DemonHp = 0;
+            else if (DemonHp > 9999) DemonHp = 9999;
+            if (DemonMp < 0) DemonMp = 0;
+            else if (DemonMp > 9999) DemonMp = 9999;
+            if (DemonStrength < 0) DemonStrength = 0;
+            else if (DemonStrength > 999) DemonStrength = 999;
+            if (DemonVitality < 0) DemonVitality = 0;
+            else if (DemonVitality > 999) DemonVitality = 999;
+            if (DemonMagic < 0) DemonMagic = 0;
+            else if (DemonMagic > 999) DemonMagic = 999;
+            if (DemonAgility < 0) DemonAgility = 0;
+            else if (DemonAgility > 999) DemonAgility = 999;
+            if (DemonLuck < 0) DemonLuck = 0;
+            else if (DemonLuck > 999) DemonLuck = 999;
+
+            DemonTypeComboBox.Visible = true;
+            DemonClearButton.Visible = true;
+            if (DemonId == -1 || SMTVDemonCollection.DemonList.Values.FirstOrDefault(d => d.DevilId == DemonId) is not SMTVDemon demonObject)
+            {
+                DemonTypeComboBox.SelectedIndex = -1;
+            }
+            else
+            {
+                DemonTypeComboBox.SelectedIndex = demonObject.Index;
+            }
+
+            DemonExperienceNumUpDown.Value = DemonExp;
+            DemonLevelNumUpDown.Value = DemonLevel;
+            DemonHpNumericUpDown.Value = DemonHp;
+            DemonMpNumericUpDown.Value = DemonMp;
+            StrengthNumUpDown.Value = DemonStrength;
+            VitalityNumUpDown.Value = DemonVitality;
+            MagicNumUpDown.Value = DemonMagic;
+            AgilityNumUpDown.Value = DemonAgility;
+            LuckNumUpDown.Value = DemonLuck;
         }
 
         private async void OpenSaveFileButton_Click(object sender, EventArgs e)
@@ -187,11 +303,12 @@ namespace Aogami.WinForms
         private void DebugTestsButton_Click(object sender, EventArgs e)
         {
             // I'm trying to read the game's files.
-            byte[] data = File.ReadAllBytes("SkillName.uexp");
+            byte[] data = File.ReadAllBytes("CharacterName.uexp");
 
             System.Text.StringBuilder sb = new();
             int i = 231;
             int index = 0;
+            int id = 0;
             while (i < data.Length)
             {
                 int strLen = BitConverter.ToInt32(data, i) - 1;
@@ -210,7 +327,11 @@ namespace Aogami.WinForms
                     i += 470 + strLen;
                 }
 
-                sb.AppendLine($"{{ {index++}, \"{str}\" }},");
+                if (!str.StartsWith("NOT USED"))
+                {
+                    sb.AppendLine($"{{ {index}, new({index++}, \"{str}\", {id}, {id}, {id}) }},");
+                }
+                id += 1;
             }
 
             File.WriteAllText("output_test.out", sb.ToString());
@@ -384,139 +505,330 @@ namespace Aogami.WinForms
             readyForUserInput = true;
         }
 
-        private void SetNahobinoToMaxButton_Click(object sender, EventArgs e)
+        private void SetDemonToMaxButton_Click(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
 
-            NahobinoExperienceNumUpDown.Value = NahobinoExperienceNumUpDown.Maximum;
-            NahobinoLevelNumUpDown.Value = NahobinoLevelNumUpDown.Maximum;
-            NahobinoHpNumericUpDown.Value = NahobinoHpNumericUpDown.Maximum;
-            NahobinoMpNumericUpDown.Value = NahobinoMpNumericUpDown.Maximum;
+            DemonExperienceNumUpDown.Value = DemonExperienceNumUpDown.Maximum;
+            DemonLevelNumUpDown.Value = DemonLevelNumUpDown.Maximum;
+            DemonHpNumericUpDown.Value = DemonHpNumericUpDown.Maximum;
+            DemonMpNumericUpDown.Value = DemonMpNumericUpDown.Maximum;
             StrengthNumUpDown.Value = StrengthNumUpDown.Maximum;
             VitalityNumUpDown.Value = VitalityNumUpDown.Maximum;
             MagicNumUpDown.Value = MagicNumUpDown.Maximum;
             AgilityNumUpDown.Value = AgilityNumUpDown.Maximum;
             LuckNumUpDown.Value = LuckNumUpDown.Maximum;
 
-            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp, (int)NahobinoExperienceNumUpDown.Value);
-            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp2, (int)NahobinoExperienceNumUpDown.Value);
-            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp3, (int)NahobinoExperienceNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)NahobinoLevelNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)NahobinoLevelNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)NahobinoLevelNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)NahobinoHpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, (short)NahobinoHpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)NahobinoHpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)NahobinoMpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, (short)NahobinoMpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)NahobinoMpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, (short)StrengthNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, (short)VitalityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, (short)MagicNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, (short)AgilityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, (short)LuckNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp, (int)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp2, (int)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp3, (int)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)DemonLevelNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)DemonLevelNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)DemonLevelNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (int)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum, (short)DemonLevelNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength + offsetSum, (short)StrengthNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, (short)StrengthNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality + offsetSum, (short)VitalityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality3 + offsetSum, (short)VitalityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic + offsetSum, (short)MagicNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic3 + offsetSum, (short)MagicNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility + offsetSum, (short)AgilityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility3 + offsetSum, (short)AgilityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck + offsetSum, (short)LuckNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck3 + offsetSum, (short)LuckNumUpDown.Value);
+            }
 
             readyForUserInput = true;
         }
 
-        private void NahobinoExperienceNumUpDown_ValueChanged(object sender, EventArgs e)
+        private void DemonExperienceNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp, (int)NahobinoExperienceNumUpDown.Value);
-            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp2, (int)NahobinoExperienceNumUpDown.Value);
-            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp3, (int)NahobinoExperienceNumUpDown.Value);
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp, (int)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp2, (int)DemonExperienceNumUpDown.Value);
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.NahobinoExp3, (int)DemonExperienceNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (short)DemonLevelNumUpDown.Value);
+            }
             readyForUserInput = true;
         }
 
-        private void NahobinoLevelNumUpDown_ValueChanged(object sender, EventArgs e)
+        private void DemonLevelNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)NahobinoLevelNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)NahobinoLevelNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)NahobinoLevelNumUpDown.Value);
-            readyForUserInput = true;
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel, (short)DemonLevelNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)DemonLevelNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)DemonLevelNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum, (short)DemonLevelNumUpDown.Value);;
+            }
         }
 
-        private void NahobinoHpNumericUpDown_ValueChanged(object sender, EventArgs e)
+        private void DemonHpNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)NahobinoHpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, (short)NahobinoHpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)NahobinoHpNumericUpDown.Value);
-            readyForUserInput = true;
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)DemonHpNumericUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, (short)DemonHpNumericUpDown.Value);
+            }
         }
 
-        private void NahobinoMpNumericUpDown_ValueChanged(object sender, EventArgs e)
+        private void DemonMpNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)NahobinoMpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, (short)NahobinoMpNumericUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)NahobinoMpNumericUpDown.Value);
-            readyForUserInput = true;
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)DemonMpNumericUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, (short)DemonMpNumericUpDown.Value);
+            }
         }
 
         private void StrengthNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, (short)StrengthNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
-            readyForUserInput = true;
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength + offsetSum, (short)StrengthNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, (short)StrengthNumUpDown.Value);
+            }
         }
 
         private void VitalityNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, (short)VitalityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality + offsetSum, (short)VitalityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality3 + offsetSum, (short)VitalityNumUpDown.Value);
+            }
             readyForUserInput = true;
         }
 
         private void MagicNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, (short)MagicNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic + offsetSum, (short)MagicNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic3 + offsetSum, (short)MagicNumUpDown.Value);
+            }
             readyForUserInput = true;
         }
 
         private void AgilityNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, (short)AgilityNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility + offsetSum, (short)AgilityNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility3 + offsetSum, (short)AgilityNumUpDown.Value);
+            }
             readyForUserInput = true;
         }
 
         private void LuckNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (openedGameSaveData == null || !readyForUserInput) return;
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             readyForUserInput = false;
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, (short)LuckNumUpDown.Value);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
+            if (DemonStockListView.SelectedIndices[0] == 0)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
+            }
+            else
+            {
+                int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck + offsetSum, (short)LuckNumUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck3 + offsetSum, (short)LuckNumUpDown.Value);
+            }
+            readyForUserInput = true;
+        }
+
+        private void DemonStockListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
+            readyForUserInput = false;
+            if (DemonStockListView.SelectedIndices[0] == 0) SerializeNahobino();
+            else SerializeDemon(DemonStockListView.SelectedIndices[0]);
+            readyForUserInput = true;
+        }
+
+        private void DemonTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedItems.Count != 1) return;
+            readyForUserInput = false;
+            int demonIndex = (int)DemonStockListView.SelectedItems[0].Tag;
+            int offsetSum = (demonIndex - 1) * 392;
+            SMTVDemon? newDemon = SMTVDemonCollection.DemonList.Values.FirstOrDefault(x => x.Index == DemonTypeComboBox.SelectedIndex);
+            if (newDemon != null)
+            {
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonId + offsetSum, newDemon.DevilId);
+                DemonStockListView.SelectedItems[0].ImageKey = $"Devil{newDemon.SpriteId}";
+                DemonStockListView.SelectedItems[0].SubItems[0].Text = newDemon.CharacterName;
+            }
+            readyForUserInput = true;
+        }
+
+        private void DemonClearButton_Click(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedItems.Count != 1) return;
+            else if (MessageBox.Show("Are you sure you want to wipe out this demon?", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+            int demonIndex = (int)DemonStockListView.SelectedItems[0].Tag;
+            if (demonIndex == 0)
+            {
+                MessageBox.Show("You can't remove Nahobino!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            readyForUserInput = false;
+            int offsetSum = (demonIndex - 1) * 392;
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonId + offsetSum, -1);
+            openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum, 1);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality2 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality3 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic2 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic3 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility2 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility3 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck2 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck3 + offsetSum, 0);
+            DemonStockListView.SelectedItems[0].ImageKey = null;
+            DemonStockListView.SelectedItems[0].SubItems[0].Text = "(empty)";
+
+            DemonTypeComboBox.SelectedIndex = -1;
+            DemonExperienceNumUpDown.Value = 0;
+            DemonLevelNumUpDown.Value = 1;
+            DemonHpNumericUpDown.Value = 0;
+            DemonMpNumericUpDown.Value = 0;
+            StrengthNumUpDown.Value = 0;
+            VitalityNumUpDown.Value = 0;
+            MagicNumUpDown.Value = 0;
+            AgilityNumUpDown.Value = 0;
+            LuckNumUpDown.Value = 0;
+
             readyForUserInput = true;
         }
     }

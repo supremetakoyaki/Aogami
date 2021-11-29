@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.OpenSaveFileButton = new System.Windows.Forms.Button();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.SaveChangesButton = new System.Windows.Forms.Button();
@@ -60,8 +61,13 @@
             this.ItemNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NahobinoTabPage = new System.Windows.Forms.TabPage();
-            this.SetNahobinoToMaxButton = new System.Windows.Forms.Button();
+            this.DemonsTabPage = new System.Windows.Forms.TabPage();
+            this.DemonTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.EditSkillsButton = new System.Windows.Forms.Button();
+            this.DemonStockListView = new System.Windows.Forms.ListView();
+            this.DemonNameColumn = new System.Windows.Forms.ColumnHeader();
+            this.DemonNoColumn = new System.Windows.Forms.ColumnHeader();
+            this.SetDemonToMaxButton = new System.Windows.Forms.Button();
             this.LuckNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.LuckLabel = new System.Windows.Forms.Label();
             this.AgilityNumUpDown = new System.Windows.Forms.NumericUpDown();
@@ -72,18 +78,20 @@
             this.VitalityLabel = new System.Windows.Forms.Label();
             this.StrengthNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.StrengthLabel = new System.Windows.Forms.Label();
-            this.NahobinoMpNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.NahobinoMpLabel = new System.Windows.Forms.Label();
-            this.NahobinoHpNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.NahobinoHpLabel = new System.Windows.Forms.Label();
-            this.NahobinoExperienceNumUpDown = new System.Windows.Forms.NumericUpDown();
-            this.NahobinoLevelNumUpDown = new System.Windows.Forms.NumericUpDown();
-            this.NahobinoExperienceLabel = new System.Windows.Forms.Label();
-            this.NahobinoLevelLabel = new System.Windows.Forms.Label();
+            this.DemonMpNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DemonMpLabel = new System.Windows.Forms.Label();
+            this.DemonHpNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DemonHpLabel = new System.Windows.Forms.Label();
+            this.DemonExperienceNumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DemonLevelNumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DemonExperienceLabel = new System.Windows.Forms.Label();
+            this.DemonLevelLabel = new System.Windows.Forms.Label();
             this.SaveDataGroupBox = new System.Windows.Forms.GroupBox();
             this.MakeBackUpCheckbox = new System.Windows.Forms.CheckBox();
             this.ImportDecryptedDataButton = new System.Windows.Forms.Button();
             this.ExportDecryptedDataButton = new System.Windows.Forms.Button();
+            this.DemonImageList = new System.Windows.Forms.ImageList(this.components);
+            this.DemonClearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
             this.GeneralStatsTabPage.SuspendLayout();
@@ -93,16 +101,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaccaNumUpDown)).BeginInit();
             this.ItemsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemListDataGridView)).BeginInit();
-            this.NahobinoTabPage.SuspendLayout();
+            this.DemonsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LuckNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgilityNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MagicNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VitalityNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StrengthNumUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoMpNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoHpNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoExperienceNumUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoLevelNumUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonMpNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonHpNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonExperienceNumUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonLevelNumUpDown)).BeginInit();
             this.SaveDataGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,7 +148,7 @@
             // 
             this.SaveDataTabControl.Controls.Add(this.GeneralStatsTabPage);
             this.SaveDataTabControl.Controls.Add(this.ItemsTabPage);
-            this.SaveDataTabControl.Controls.Add(this.NahobinoTabPage);
+            this.SaveDataTabControl.Controls.Add(this.DemonsTabPage);
             this.SaveDataTabControl.Location = new System.Drawing.Point(6, 22);
             this.SaveDataTabControl.Name = "SaveDataTabControl";
             this.SaveDataTabControl.SelectedIndex = 0;
@@ -470,51 +478,102 @@
             this.ItemAmountColumn.HeaderText = "Amount";
             this.ItemAmountColumn.Name = "ItemAmountColumn";
             // 
-            // NahobinoTabPage
+            // DemonsTabPage
             // 
-            this.NahobinoTabPage.Controls.Add(this.SetNahobinoToMaxButton);
-            this.NahobinoTabPage.Controls.Add(this.LuckNumUpDown);
-            this.NahobinoTabPage.Controls.Add(this.LuckLabel);
-            this.NahobinoTabPage.Controls.Add(this.AgilityNumUpDown);
-            this.NahobinoTabPage.Controls.Add(this.AgilityLabel);
-            this.NahobinoTabPage.Controls.Add(this.MagicNumUpDown);
-            this.NahobinoTabPage.Controls.Add(this.MagicLabel);
-            this.NahobinoTabPage.Controls.Add(this.VitalityNumUpDown);
-            this.NahobinoTabPage.Controls.Add(this.VitalityLabel);
-            this.NahobinoTabPage.Controls.Add(this.StrengthNumUpDown);
-            this.NahobinoTabPage.Controls.Add(this.StrengthLabel);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoMpNumericUpDown);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoMpLabel);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoHpNumericUpDown);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoHpLabel);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoExperienceNumUpDown);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoLevelNumUpDown);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoExperienceLabel);
-            this.NahobinoTabPage.Controls.Add(this.NahobinoLevelLabel);
-            this.NahobinoTabPage.Location = new System.Drawing.Point(4, 24);
-            this.NahobinoTabPage.Name = "NahobinoTabPage";
-            this.NahobinoTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.NahobinoTabPage.Size = new System.Drawing.Size(540, 231);
-            this.NahobinoTabPage.TabIndex = 2;
-            this.NahobinoTabPage.Text = "Nahobino Stats";
-            this.NahobinoTabPage.UseVisualStyleBackColor = true;
+            this.DemonsTabPage.Controls.Add(this.DemonClearButton);
+            this.DemonsTabPage.Controls.Add(this.DemonTypeComboBox);
+            this.DemonsTabPage.Controls.Add(this.EditSkillsButton);
+            this.DemonsTabPage.Controls.Add(this.DemonStockListView);
+            this.DemonsTabPage.Controls.Add(this.SetDemonToMaxButton);
+            this.DemonsTabPage.Controls.Add(this.LuckNumUpDown);
+            this.DemonsTabPage.Controls.Add(this.LuckLabel);
+            this.DemonsTabPage.Controls.Add(this.AgilityNumUpDown);
+            this.DemonsTabPage.Controls.Add(this.AgilityLabel);
+            this.DemonsTabPage.Controls.Add(this.MagicNumUpDown);
+            this.DemonsTabPage.Controls.Add(this.MagicLabel);
+            this.DemonsTabPage.Controls.Add(this.VitalityNumUpDown);
+            this.DemonsTabPage.Controls.Add(this.VitalityLabel);
+            this.DemonsTabPage.Controls.Add(this.StrengthNumUpDown);
+            this.DemonsTabPage.Controls.Add(this.StrengthLabel);
+            this.DemonsTabPage.Controls.Add(this.DemonMpNumericUpDown);
+            this.DemonsTabPage.Controls.Add(this.DemonMpLabel);
+            this.DemonsTabPage.Controls.Add(this.DemonHpNumericUpDown);
+            this.DemonsTabPage.Controls.Add(this.DemonHpLabel);
+            this.DemonsTabPage.Controls.Add(this.DemonExperienceNumUpDown);
+            this.DemonsTabPage.Controls.Add(this.DemonLevelNumUpDown);
+            this.DemonsTabPage.Controls.Add(this.DemonExperienceLabel);
+            this.DemonsTabPage.Controls.Add(this.DemonLevelLabel);
+            this.DemonsTabPage.Location = new System.Drawing.Point(4, 24);
+            this.DemonsTabPage.Name = "DemonsTabPage";
+            this.DemonsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.DemonsTabPage.Size = new System.Drawing.Size(540, 231);
+            this.DemonsTabPage.TabIndex = 2;
+            this.DemonsTabPage.Text = "Demons";
+            this.DemonsTabPage.UseVisualStyleBackColor = true;
             // 
-            // SetNahobinoToMaxButton
+            // DemonTypeComboBox
             // 
-            this.SetNahobinoToMaxButton.BackColor = System.Drawing.Color.Honeydew;
-            this.SetNahobinoToMaxButton.Location = new System.Drawing.Point(384, 202);
-            this.SetNahobinoToMaxButton.Name = "SetNahobinoToMaxButton";
-            this.SetNahobinoToMaxButton.Size = new System.Drawing.Size(150, 23);
-            this.SetNahobinoToMaxButton.TabIndex = 18;
-            this.SetNahobinoToMaxButton.Text = "Set Everything to Max";
-            this.SetNahobinoToMaxButton.UseVisualStyleBackColor = false;
-            this.SetNahobinoToMaxButton.Click += new System.EventHandler(this.SetNahobinoToMaxButton_Click);
+            this.DemonTypeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.DemonTypeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.DemonTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DemonTypeComboBox.FormattingEnabled = true;
+            this.DemonTypeComboBox.Location = new System.Drawing.Point(261, 12);
+            this.DemonTypeComboBox.Name = "DemonTypeComboBox";
+            this.DemonTypeComboBox.Size = new System.Drawing.Size(146, 23);
+            this.DemonTypeComboBox.TabIndex = 22;
+            this.DemonTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.DemonTypeComboBox_SelectedIndexChanged);
+            // 
+            // EditSkillsButton
+            // 
+            this.EditSkillsButton.Location = new System.Drawing.Point(260, 157);
+            this.EditSkillsButton.Name = "EditSkillsButton";
+            this.EditSkillsButton.Size = new System.Drawing.Size(95, 23);
+            this.EditSkillsButton.TabIndex = 21;
+            this.EditSkillsButton.Text = "Edit Skills";
+            this.EditSkillsButton.UseVisualStyleBackColor = true;
+            // 
+            // DemonStockListView
+            // 
+            this.DemonStockListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.DemonNameColumn,
+            this.DemonNoColumn});
+            this.DemonStockListView.FullRowSelect = true;
+            this.DemonStockListView.Location = new System.Drawing.Point(6, 6);
+            this.DemonStockListView.Name = "DemonStockListView";
+            this.DemonStockListView.Size = new System.Drawing.Size(248, 219);
+            this.DemonStockListView.TabIndex = 19;
+            this.DemonStockListView.UseCompatibleStateImageBehavior = false;
+            this.DemonStockListView.View = System.Windows.Forms.View.Details;
+            this.DemonStockListView.SelectedIndexChanged += new System.EventHandler(this.DemonStockListView_SelectedIndexChanged);
+            // 
+            // DemonNameColumn
+            // 
+            this.DemonNameColumn.DisplayIndex = 1;
+            this.DemonNameColumn.Text = "Name";
+            this.DemonNameColumn.Width = 190;
+            // 
+            // DemonNoColumn
+            // 
+            this.DemonNoColumn.DisplayIndex = 0;
+            this.DemonNoColumn.Text = "No.";
+            this.DemonNoColumn.Width = 40;
+            // 
+            // SetDemonToMaxButton
+            // 
+            this.SetDemonToMaxButton.BackColor = System.Drawing.Color.Honeydew;
+            this.SetDemonToMaxButton.Location = new System.Drawing.Point(384, 202);
+            this.SetDemonToMaxButton.Name = "SetDemonToMaxButton";
+            this.SetDemonToMaxButton.Size = new System.Drawing.Size(150, 23);
+            this.SetDemonToMaxButton.TabIndex = 18;
+            this.SetDemonToMaxButton.Text = "Set Everything to Max";
+            this.SetDemonToMaxButton.UseVisualStyleBackColor = false;
+            this.SetDemonToMaxButton.Click += new System.EventHandler(this.SetDemonToMaxButton_Click);
             // 
             // LuckNumUpDown
             // 
-            this.LuckNumUpDown.Location = new System.Drawing.Point(291, 128);
+            this.LuckNumUpDown.Location = new System.Drawing.Point(474, 129);
             this.LuckNumUpDown.Maximum = new decimal(new int[] {
-            99,
+            999,
             0,
             0,
             0});
@@ -526,7 +585,7 @@
             // LuckLabel
             // 
             this.LuckLabel.AutoSize = true;
-            this.LuckLabel.Location = new System.Drawing.Point(231, 130);
+            this.LuckLabel.Location = new System.Drawing.Point(414, 131);
             this.LuckLabel.Name = "LuckLabel";
             this.LuckLabel.Size = new System.Drawing.Size(35, 15);
             this.LuckLabel.TabIndex = 16;
@@ -534,9 +593,9 @@
             // 
             // AgilityNumUpDown
             // 
-            this.AgilityNumUpDown.Location = new System.Drawing.Point(291, 99);
+            this.AgilityNumUpDown.Location = new System.Drawing.Point(474, 100);
             this.AgilityNumUpDown.Maximum = new decimal(new int[] {
-            99,
+            999,
             0,
             0,
             0});
@@ -548,7 +607,7 @@
             // AgilityLabel
             // 
             this.AgilityLabel.AutoSize = true;
-            this.AgilityLabel.Location = new System.Drawing.Point(231, 101);
+            this.AgilityLabel.Location = new System.Drawing.Point(414, 102);
             this.AgilityLabel.Name = "AgilityLabel";
             this.AgilityLabel.Size = new System.Drawing.Size(44, 15);
             this.AgilityLabel.TabIndex = 14;
@@ -556,9 +615,9 @@
             // 
             // MagicNumUpDown
             // 
-            this.MagicNumUpDown.Location = new System.Drawing.Point(291, 70);
+            this.MagicNumUpDown.Location = new System.Drawing.Point(474, 71);
             this.MagicNumUpDown.Maximum = new decimal(new int[] {
-            99,
+            999,
             0,
             0,
             0});
@@ -570,7 +629,7 @@
             // MagicLabel
             // 
             this.MagicLabel.AutoSize = true;
-            this.MagicLabel.Location = new System.Drawing.Point(231, 72);
+            this.MagicLabel.Location = new System.Drawing.Point(414, 73);
             this.MagicLabel.Name = "MagicLabel";
             this.MagicLabel.Size = new System.Drawing.Size(43, 15);
             this.MagicLabel.TabIndex = 12;
@@ -578,9 +637,9 @@
             // 
             // VitalityNumUpDown
             // 
-            this.VitalityNumUpDown.Location = new System.Drawing.Point(291, 41);
+            this.VitalityNumUpDown.Location = new System.Drawing.Point(474, 42);
             this.VitalityNumUpDown.Maximum = new decimal(new int[] {
-            99,
+            999,
             0,
             0,
             0});
@@ -592,7 +651,7 @@
             // VitalityLabel
             // 
             this.VitalityLabel.AutoSize = true;
-            this.VitalityLabel.Location = new System.Drawing.Point(231, 43);
+            this.VitalityLabel.Location = new System.Drawing.Point(414, 44);
             this.VitalityLabel.Name = "VitalityLabel";
             this.VitalityLabel.Size = new System.Drawing.Size(46, 15);
             this.VitalityLabel.TabIndex = 10;
@@ -600,9 +659,9 @@
             // 
             // StrengthNumUpDown
             // 
-            this.StrengthNumUpDown.Location = new System.Drawing.Point(291, 12);
+            this.StrengthNumUpDown.Location = new System.Drawing.Point(474, 13);
             this.StrengthNumUpDown.Maximum = new decimal(new int[] {
-            99,
+            999,
             0,
             0,
             0});
@@ -614,109 +673,109 @@
             // StrengthLabel
             // 
             this.StrengthLabel.AutoSize = true;
-            this.StrengthLabel.Location = new System.Drawing.Point(230, 14);
+            this.StrengthLabel.Location = new System.Drawing.Point(413, 15);
             this.StrengthLabel.Name = "StrengthLabel";
             this.StrengthLabel.Size = new System.Drawing.Size(55, 15);
             this.StrengthLabel.TabIndex = 8;
             this.StrengthLabel.Text = "Strength:";
             // 
-            // NahobinoMpNumericUpDown
+            // DemonMpNumericUpDown
             // 
-            this.NahobinoMpNumericUpDown.Location = new System.Drawing.Point(106, 100);
-            this.NahobinoMpNumericUpDown.Maximum = new decimal(new int[] {
+            this.DemonMpNumericUpDown.Location = new System.Drawing.Point(304, 128);
+            this.DemonMpNumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
-            this.NahobinoMpNumericUpDown.Name = "NahobinoMpNumericUpDown";
-            this.NahobinoMpNumericUpDown.Size = new System.Drawing.Size(51, 23);
-            this.NahobinoMpNumericUpDown.TabIndex = 7;
-            this.NahobinoMpNumericUpDown.ValueChanged += new System.EventHandler(this.NahobinoMpNumericUpDown_ValueChanged);
+            this.DemonMpNumericUpDown.Name = "DemonMpNumericUpDown";
+            this.DemonMpNumericUpDown.Size = new System.Drawing.Size(51, 23);
+            this.DemonMpNumericUpDown.TabIndex = 7;
+            this.DemonMpNumericUpDown.ValueChanged += new System.EventHandler(this.DemonMpNumericUpDown_ValueChanged);
             // 
-            // NahobinoMpLabel
+            // DemonMpLabel
             // 
-            this.NahobinoMpLabel.AutoSize = true;
-            this.NahobinoMpLabel.Location = new System.Drawing.Point(7, 102);
-            this.NahobinoMpLabel.Name = "NahobinoMpLabel";
-            this.NahobinoMpLabel.Size = new System.Drawing.Size(84, 15);
-            this.NahobinoMpLabel.TabIndex = 6;
-            this.NahobinoMpLabel.Text = "Nahobino MP:";
+            this.DemonMpLabel.AutoSize = true;
+            this.DemonMpLabel.Location = new System.Drawing.Point(261, 131);
+            this.DemonMpLabel.Name = "DemonMpLabel";
+            this.DemonMpLabel.Size = new System.Drawing.Size(28, 15);
+            this.DemonMpLabel.TabIndex = 6;
+            this.DemonMpLabel.Text = "MP:";
             // 
-            // NahobinoHpNumericUpDown
+            // DemonHpNumericUpDown
             // 
-            this.NahobinoHpNumericUpDown.Location = new System.Drawing.Point(106, 71);
-            this.NahobinoHpNumericUpDown.Maximum = new decimal(new int[] {
+            this.DemonHpNumericUpDown.Location = new System.Drawing.Point(304, 99);
+            this.DemonHpNumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
-            this.NahobinoHpNumericUpDown.Name = "NahobinoHpNumericUpDown";
-            this.NahobinoHpNumericUpDown.Size = new System.Drawing.Size(51, 23);
-            this.NahobinoHpNumericUpDown.TabIndex = 5;
-            this.NahobinoHpNumericUpDown.ValueChanged += new System.EventHandler(this.NahobinoHpNumericUpDown_ValueChanged);
+            this.DemonHpNumericUpDown.Name = "DemonHpNumericUpDown";
+            this.DemonHpNumericUpDown.Size = new System.Drawing.Size(51, 23);
+            this.DemonHpNumericUpDown.TabIndex = 5;
+            this.DemonHpNumericUpDown.ValueChanged += new System.EventHandler(this.DemonHpNumericUpDown_ValueChanged);
             // 
-            // NahobinoHpLabel
+            // DemonHpLabel
             // 
-            this.NahobinoHpLabel.AutoSize = true;
-            this.NahobinoHpLabel.Location = new System.Drawing.Point(6, 72);
-            this.NahobinoHpLabel.Name = "NahobinoHpLabel";
-            this.NahobinoHpLabel.Size = new System.Drawing.Size(82, 15);
-            this.NahobinoHpLabel.TabIndex = 4;
-            this.NahobinoHpLabel.Text = "Nahobino HP:";
+            this.DemonHpLabel.AutoSize = true;
+            this.DemonHpLabel.Location = new System.Drawing.Point(260, 101);
+            this.DemonHpLabel.Name = "DemonHpLabel";
+            this.DemonHpLabel.Size = new System.Drawing.Size(26, 15);
+            this.DemonHpLabel.TabIndex = 4;
+            this.DemonHpLabel.Text = "HP:";
             // 
-            // NahobinoExperienceNumUpDown
+            // DemonExperienceNumUpDown
             // 
-            this.NahobinoExperienceNumUpDown.Location = new System.Drawing.Point(106, 13);
-            this.NahobinoExperienceNumUpDown.Maximum = new decimal(new int[] {
+            this.DemonExperienceNumUpDown.Location = new System.Drawing.Point(304, 41);
+            this.DemonExperienceNumUpDown.Maximum = new decimal(new int[] {
             2147483647,
             0,
             0,
             0});
-            this.NahobinoExperienceNumUpDown.Name = "NahobinoExperienceNumUpDown";
-            this.NahobinoExperienceNumUpDown.Size = new System.Drawing.Size(94, 23);
-            this.NahobinoExperienceNumUpDown.TabIndex = 2;
-            this.NahobinoExperienceNumUpDown.ValueChanged += new System.EventHandler(this.NahobinoExperienceNumUpDown_ValueChanged);
+            this.DemonExperienceNumUpDown.Name = "DemonExperienceNumUpDown";
+            this.DemonExperienceNumUpDown.Size = new System.Drawing.Size(103, 23);
+            this.DemonExperienceNumUpDown.TabIndex = 2;
+            this.DemonExperienceNumUpDown.ValueChanged += new System.EventHandler(this.DemonExperienceNumUpDown_ValueChanged);
             // 
-            // NahobinoLevelNumUpDown
+            // DemonLevelNumUpDown
             // 
-            this.NahobinoLevelNumUpDown.Location = new System.Drawing.Point(106, 42);
-            this.NahobinoLevelNumUpDown.Maximum = new decimal(new int[] {
+            this.DemonLevelNumUpDown.Location = new System.Drawing.Point(304, 70);
+            this.DemonLevelNumUpDown.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.NahobinoLevelNumUpDown.Minimum = new decimal(new int[] {
+            this.DemonLevelNumUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.NahobinoLevelNumUpDown.Name = "NahobinoLevelNumUpDown";
-            this.NahobinoLevelNumUpDown.Size = new System.Drawing.Size(51, 23);
-            this.NahobinoLevelNumUpDown.TabIndex = 3;
-            this.NahobinoLevelNumUpDown.Value = new decimal(new int[] {
+            this.DemonLevelNumUpDown.Name = "DemonLevelNumUpDown";
+            this.DemonLevelNumUpDown.Size = new System.Drawing.Size(51, 23);
+            this.DemonLevelNumUpDown.TabIndex = 3;
+            this.DemonLevelNumUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.NahobinoLevelNumUpDown.ValueChanged += new System.EventHandler(this.NahobinoLevelNumUpDown_ValueChanged);
+            this.DemonLevelNumUpDown.ValueChanged += new System.EventHandler(this.DemonLevelNumUpDown_ValueChanged);
             // 
-            // NahobinoExperienceLabel
+            // DemonExperienceLabel
             // 
-            this.NahobinoExperienceLabel.AutoSize = true;
-            this.NahobinoExperienceLabel.Location = new System.Drawing.Point(6, 15);
-            this.NahobinoExperienceLabel.Name = "NahobinoExperienceLabel";
-            this.NahobinoExperienceLabel.Size = new System.Drawing.Size(86, 15);
-            this.NahobinoExperienceLabel.TabIndex = 0;
-            this.NahobinoExperienceLabel.Text = "Nahobino EXP:";
+            this.DemonExperienceLabel.AutoSize = true;
+            this.DemonExperienceLabel.Location = new System.Drawing.Point(261, 44);
+            this.DemonExperienceLabel.Name = "DemonExperienceLabel";
+            this.DemonExperienceLabel.Size = new System.Drawing.Size(30, 15);
+            this.DemonExperienceLabel.TabIndex = 0;
+            this.DemonExperienceLabel.Text = "EXP:";
             // 
-            // NahobinoLevelLabel
+            // DemonLevelLabel
             // 
-            this.NahobinoLevelLabel.AutoSize = true;
-            this.NahobinoLevelLabel.Location = new System.Drawing.Point(7, 43);
-            this.NahobinoLevelLabel.Name = "NahobinoLevelLabel";
-            this.NahobinoLevelLabel.Size = new System.Drawing.Size(93, 15);
-            this.NahobinoLevelLabel.TabIndex = 1;
-            this.NahobinoLevelLabel.Text = "Nahobino Level:";
+            this.DemonLevelLabel.AutoSize = true;
+            this.DemonLevelLabel.Location = new System.Drawing.Point(261, 72);
+            this.DemonLevelLabel.Name = "DemonLevelLabel";
+            this.DemonLevelLabel.Size = new System.Drawing.Size(37, 15);
+            this.DemonLevelLabel.TabIndex = 1;
+            this.DemonLevelLabel.Text = "Level:";
             // 
             // SaveDataGroupBox
             // 
@@ -760,6 +819,23 @@
             this.ExportDecryptedDataButton.UseVisualStyleBackColor = true;
             this.ExportDecryptedDataButton.Click += new System.EventHandler(this.ExportDecryptedDataButton_Click);
             // 
+            // DemonImageList
+            // 
+            this.DemonImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.DemonImageList.ImageSize = new System.Drawing.Size(68, 52);
+            this.DemonImageList.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // DemonClearButton
+            // 
+            this.DemonClearButton.BackColor = System.Drawing.Color.Linen;
+            this.DemonClearButton.Location = new System.Drawing.Point(260, 202);
+            this.DemonClearButton.Name = "DemonClearButton";
+            this.DemonClearButton.Size = new System.Drawing.Size(75, 23);
+            this.DemonClearButton.TabIndex = 23;
+            this.DemonClearButton.Text = "Clear";
+            this.DemonClearButton.UseVisualStyleBackColor = false;
+            this.DemonClearButton.Click += new System.EventHandler(this.DemonClearButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -788,17 +864,17 @@
             this.ItemsTabPage.ResumeLayout(false);
             this.ItemsTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemListDataGridView)).EndInit();
-            this.NahobinoTabPage.ResumeLayout(false);
-            this.NahobinoTabPage.PerformLayout();
+            this.DemonsTabPage.ResumeLayout(false);
+            this.DemonsTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LuckNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgilityNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MagicNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VitalityNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StrengthNumUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoMpNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoHpNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoExperienceNumUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NahobinoLevelNumUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonMpNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonHpNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonExperienceNumUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DemonLevelNumUpDown)).EndInit();
             this.SaveDataGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -843,25 +919,32 @@
         private DataGridViewTextBoxColumn ItemTypeColumn;
         private DataGridViewTextBoxColumn ItemAmountColumn;
         private CheckBox ItemsShowUnusedCheckBox;
-        private TabPage NahobinoTabPage;
-        private Label NahobinoExperienceLabel;
-        private Label NahobinoLevelLabel;
-        private NumericUpDown NahobinoLevelNumUpDown;
+        private TabPage DemonsTabPage;
+        private Label DemonExperienceLabel;
+        private Label DemonLevelLabel;
+        private NumericUpDown DemonLevelNumUpDown;
         private NumericUpDown VitalityNumUpDown;
         private Label VitalityLabel;
         private NumericUpDown StrengthNumUpDown;
         private Label StrengthLabel;
-        private NumericUpDown NahobinoMpNumericUpDown;
-        private Label NahobinoMpLabel;
-        private NumericUpDown NahobinoHpNumericUpDown;
-        private Label NahobinoHpLabel;
-        private NumericUpDown NahobinoExperienceNumUpDown;
+        private NumericUpDown DemonMpNumericUpDown;
+        private Label DemonMpLabel;
+        private NumericUpDown DemonHpNumericUpDown;
+        private Label DemonHpLabel;
+        private NumericUpDown DemonExperienceNumUpDown;
         private NumericUpDown LuckNumUpDown;
         private Label LuckLabel;
         private NumericUpDown AgilityNumUpDown;
         private Label AgilityLabel;
         private NumericUpDown MagicNumUpDown;
         private Label MagicLabel;
-        private Button SetNahobinoToMaxButton;
+        private Button SetDemonToMaxButton;
+        private ListView DemonStockListView;
+        private ColumnHeader DemonNameColumn;
+        private ColumnHeader DemonNoColumn;
+        private ComboBox DemonTypeComboBox;
+        private Button EditSkillsButton;
+        private ImageList DemonImageList;
+        private Button DemonClearButton;
     }
 }
