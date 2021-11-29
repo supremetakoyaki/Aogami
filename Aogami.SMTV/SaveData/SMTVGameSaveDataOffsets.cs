@@ -49,6 +49,7 @@
         public const int NahobinoLuck = 2248; // short
         public const int NahobinoLuck2 = 2264; // short
         public const int NahobinoLuck3 = 2280; // short
+        public const int NahobinoSkillId = 2416; // short? +8
 
         // Demon Stats. +392
         public const int DemonExp = 2780; // int
@@ -75,5 +76,6 @@
         public const int DemonLuck = 2720; // short
         public const int DemonLuck2 = 2752; // short
         public const int DemonLuck3 = 2768; // short
+        public const int DemonSkillId = 2800; // short? +8
     }
 }

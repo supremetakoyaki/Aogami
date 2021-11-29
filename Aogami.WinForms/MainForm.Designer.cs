@@ -62,6 +62,7 @@
             this.ItemTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DemonsTabPage = new System.Windows.Forms.TabPage();
+            this.DemonClearButton = new System.Windows.Forms.Button();
             this.DemonTypeComboBox = new System.Windows.Forms.ComboBox();
             this.EditSkillsButton = new System.Windows.Forms.Button();
             this.DemonStockListView = new System.Windows.Forms.ListView();
@@ -91,7 +92,6 @@
             this.ImportDecryptedDataButton = new System.Windows.Forms.Button();
             this.ExportDecryptedDataButton = new System.Windows.Forms.Button();
             this.DemonImageList = new System.Windows.Forms.ImageList(this.components);
-            this.DemonClearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
             this.GeneralStatsTabPage.SuspendLayout();
@@ -511,6 +511,17 @@
             this.DemonsTabPage.Text = "Demons";
             this.DemonsTabPage.UseVisualStyleBackColor = true;
             // 
+            // DemonClearButton
+            // 
+            this.DemonClearButton.BackColor = System.Drawing.Color.Linen;
+            this.DemonClearButton.Location = new System.Drawing.Point(260, 202);
+            this.DemonClearButton.Name = "DemonClearButton";
+            this.DemonClearButton.Size = new System.Drawing.Size(75, 23);
+            this.DemonClearButton.TabIndex = 23;
+            this.DemonClearButton.Text = "Clear";
+            this.DemonClearButton.UseVisualStyleBackColor = false;
+            this.DemonClearButton.Click += new System.EventHandler(this.DemonClearButton_Click);
+            // 
             // DemonTypeComboBox
             // 
             this.DemonTypeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -531,6 +542,7 @@
             this.EditSkillsButton.TabIndex = 21;
             this.EditSkillsButton.Text = "Edit Skills";
             this.EditSkillsButton.UseVisualStyleBackColor = true;
+            this.EditSkillsButton.Click += new System.EventHandler(this.EditSkillsButton_Click);
             // 
             // DemonStockListView
             // 
@@ -824,17 +836,6 @@
             this.DemonImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.DemonImageList.ImageSize = new System.Drawing.Size(68, 52);
             this.DemonImageList.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // DemonClearButton
-            // 
-            this.DemonClearButton.BackColor = System.Drawing.Color.Linen;
-            this.DemonClearButton.Location = new System.Drawing.Point(260, 202);
-            this.DemonClearButton.Name = "DemonClearButton";
-            this.DemonClearButton.Size = new System.Drawing.Size(75, 23);
-            this.DemonClearButton.TabIndex = 23;
-            this.DemonClearButton.Text = "Clear";
-            this.DemonClearButton.UseVisualStyleBackColor = false;
-            this.DemonClearButton.Click += new System.EventHandler(this.DemonClearButton_Click);
             // 
             // MainForm
             // 

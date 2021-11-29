@@ -831,5 +831,12 @@ namespace Aogami.WinForms
 
             readyForUserInput = true;
         }
+
+        private void EditSkillsButton_Click(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
+            DemonSkillEditorForm skillEditor = new(DemonStockListView.SelectedIndices[0], DemonStockListView.SelectedItems[0].SubItems[0].Text, openedGameSaveData);
+            skillEditor.ShowDialog();
+        }
     }
 }
