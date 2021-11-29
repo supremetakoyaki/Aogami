@@ -7,8 +7,6 @@ Aogami is a **Shin Megami Tensei V** save editor.
 - Edit Nahobino experience, level and stats.
 - Edit items (includes usable items, essences, relics and important items)
 - Export/import your save data in decrypted form. You can use it to make your changes using a Hex Editor, for example.
-
-# Planned features
 - Edit demons and skills.
 
 # More stuff
