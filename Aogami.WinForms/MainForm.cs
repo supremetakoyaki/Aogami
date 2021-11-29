@@ -233,7 +233,7 @@ namespace Aogami.WinForms
         private async void OpenSaveFileButton_Click(object sender, EventArgs e)
         {
             using OpenFileDialog ofd = new();
-            ofd.Filter = "Shin Megami Tensei V save file|GameSave00;GameSave01;GameSave02";
+            ofd.Filter = "Shin Megami Tensei V save file|GameSave00;GameSave01;GameSave02;GameSave03;GameSave04;GameSave05;GameSave06;GameSave07;GameSave08;GameSave09;GameSave10;GameSave11;GameSave12;GameSave13;GameSave14;GameSave15;GameSave16;GameSave17;GameSave18;GameSave19";
             ofd.Title = "Choose your Shin Megami Tensei V save file";
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -530,25 +530,25 @@ namespace Aogami.WinForms
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel2, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLevel3, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, (short)DemonHpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)DemonHpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, (short)DemonMpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)DemonMpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, (short)VitalityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, (short)MagicNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, (short)AgilityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, (short)LuckNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
             }
             else
@@ -557,25 +557,25 @@ namespace Aogami.WinForms
                 openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (int)DemonExperienceNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum, (short)DemonLevelNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, (short)DemonHpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, (short)DemonHpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, (short)DemonMpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, (short)DemonMpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength + offsetSum, (short)StrengthNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality + offsetSum, (short)VitalityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality2 + offsetSum, (short)VitalityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality3 + offsetSum, (short)VitalityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic + offsetSum, (short)MagicNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic2 + offsetSum, (short)MagicNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic3 + offsetSum, (short)MagicNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility + offsetSum, (short)AgilityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility2 + offsetSum, (short)AgilityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility3 + offsetSum, (short)AgilityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck + offsetSum, (short)LuckNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck2 + offsetSum, (short)LuckNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck3 + offsetSum, (short)LuckNumUpDown.Value);
             }
 
@@ -626,14 +626,14 @@ namespace Aogami.WinForms
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp2, (short)DemonHpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoHp3, (short)DemonHpNumericUpDown.Value);
             }
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, (short)DemonHpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, (short)DemonHpNumericUpDown.Value);
             }
             readyForUserInput = true;
@@ -646,14 +646,14 @@ namespace Aogami.WinForms
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp2, (short)DemonMpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMp3, (short)DemonMpNumericUpDown.Value);
             }
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, (short)DemonMpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, (short)DemonMpNumericUpDown.Value);
             }
             readyForUserInput = true;
@@ -666,14 +666,14 @@ namespace Aogami.WinForms
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength, (short)StrengthNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength2, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoStrength3, (short)StrengthNumUpDown.Value);
             }
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength + offsetSum, (short)StrengthNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, (short)StrengthNumUpDown.Value);
             }
             readyForUserInput = true;
@@ -686,14 +686,14 @@ namespace Aogami.WinForms
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality, (short)VitalityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality2, (short)VitalityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoVitality3, (short)VitalityNumUpDown.Value);
             }
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality + offsetSum, (short)VitalityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality2 + offsetSum, (short)VitalityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonVitality3 + offsetSum, (short)VitalityNumUpDown.Value);
             }
             readyForUserInput = true;
@@ -706,14 +706,14 @@ namespace Aogami.WinForms
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic, (short)MagicNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic2, (short)MagicNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoMagic3, (short)MagicNumUpDown.Value);
             }
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic + offsetSum, (short)MagicNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic2 + offsetSum, (short)MagicNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMagic3 + offsetSum, (short)MagicNumUpDown.Value);
             }
             readyForUserInput = true;
@@ -726,14 +726,14 @@ namespace Aogami.WinForms
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility, (short)AgilityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility2, (short)AgilityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoAgility3, (short)AgilityNumUpDown.Value);
             }
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility + offsetSum, (short)AgilityNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility2 + offsetSum, (short)AgilityNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonAgility3 + offsetSum, (short)AgilityNumUpDown.Value);
             }
             readyForUserInput = true;
@@ -746,14 +746,14 @@ namespace Aogami.WinForms
             if (DemonStockListView.SelectedIndices[0] == 0)
             {
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck, (short)LuckNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck2, (short)LuckNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.NahobinoLuck3, (short)LuckNumUpDown.Value);
             }
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck + offsetSum, (short)LuckNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck2 + offsetSum, 0);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck2 + offsetSum, (short)LuckNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLuck3 + offsetSum, (short)LuckNumUpDown.Value);
             }
             readyForUserInput = true;
