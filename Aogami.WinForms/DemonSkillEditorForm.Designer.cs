@@ -122,6 +122,7 @@
             this.AllSkillsListView.MultiSelect = false;
             this.AllSkillsListView.Name = "AllSkillsListView";
             this.AllSkillsListView.Size = new System.Drawing.Size(250, 292);
+            this.AllSkillsListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.AllSkillsListView.TabIndex = 0;
             this.AllSkillsListView.UseCompatibleStateImageBehavior = false;
             this.AllSkillsListView.View = System.Windows.Forms.View.Details;
