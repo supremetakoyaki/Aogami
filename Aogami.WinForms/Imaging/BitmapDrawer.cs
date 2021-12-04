@@ -45,13 +45,17 @@ namespace Aogami.WinForms.Imaging
                 return;
             }
 
+            float scaleFactor = control.DeviceDpi / 96f;
+            int scaleWidth = (int)(control.Width * scaleFactor);
+            int scaleHeight = (int)(control.Height * scaleFactor);
+
             if (control.InvokeRequired)
             {
-                control.Invoke(new(() => control.Image = DrawImage(resource, control.Width, control.Height, highQuality, control.DeviceDpi)));
+                control.Invoke(new(() => control.Image = DrawImage(resource, scaleWidth, scaleHeight, highQuality, control.DeviceDpi)));
             }
             else
             {
-                control.Image = DrawImage(resource, control.Width, control.Height, highQuality, control.DeviceDpi);
+                control.Image = DrawImage(resource, scaleWidth, scaleHeight, highQuality, control.DeviceDpi);
             }
         }
     }
