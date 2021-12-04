@@ -51,10 +51,13 @@ namespace Aogami.WinForms
             {
                 if (!skillKvp.Value.StartsWith("NOT USED") && !SpecificDemonSkillsListView.Items.ContainsKey(skillKvp.Value))
                 {
-                    ListViewItem skillItem = new(skillKvp.Value);
-                    skillItem.Name = skillKvp.Value;
-                    skillItem.Tag = (short)(skillKvp.Key + 1);
-                    AllSkillsListView.Items.Add(skillItem);
+                    if (!AllSkillsListView.Items.ContainsKey(skillKvp.Value))
+                    {
+                        ListViewItem skillItem = new(skillKvp.Value);
+                        skillItem.Name = skillKvp.Value;
+                        skillItem.Tag = (short)(skillKvp.Key + 1);
+                        AllSkillsListView.Items.Add(skillItem);
+                    }
                 }
             }
         }
