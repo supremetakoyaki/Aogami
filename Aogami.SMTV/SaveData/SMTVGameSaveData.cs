@@ -104,7 +104,7 @@ namespace Aogami.SMTV.SaveData
 
         public string RetrieveString(int Offset, int Length, bool ValidateNameLength = false)
         {
-            string output = Encoding.ASCII.GetString(decryptedData, Offset, Length).Replace("\0", "");
+            string output = Encoding.Unicode.GetString(decryptedData, Offset, Length);//.Replace("\0", "");
             if (ValidateNameLength && output.Length > Length / 2) output = output[..(Length / 2)];
             return output;
         }
@@ -144,17 +144,17 @@ namespace Aogami.SMTV.SaveData
             decryptedData[Offset] = Byte;
         }
 
-        public void UpdateString(int Offset, string Text, int MaxLength = 8)
+        public void UpdateString(int Offset, string Text, int MaxLength = 16)
         {
-            foreach (char c in Text)
+            byte[] textBytes = Encoding.Unicode.GetBytes(Text);
+            for (int i = 0; i < textBytes.Length; i++)
             {
-                decryptedData[Offset++] = Convert.ToByte(c);
-                decryptedData[Offset++] = 0;
+                decryptedData[Offset++] = textBytes[i];
             }
 
-            if (Text.Length < MaxLength)
+            if (textBytes.Length < 16)
             {
-                for (int i = 0; i < MaxLength - Text.Length; i++)
+                for (int i = 0; i < MaxLength - textBytes.Length; i++)
                 {
                     decryptedData[Offset++] = 0;
                     decryptedData[Offset++] = 0;

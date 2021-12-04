@@ -303,12 +303,11 @@ namespace Aogami.WinForms
         private void DebugTestsButton_Click(object sender, EventArgs e)
         {
             // I'm trying to read the game's files.
-            byte[] data = File.ReadAllBytes("CharacterName.uexp");
+            byte[] data = File.ReadAllBytes("GodParameterName.uexp");
 
             System.Text.StringBuilder sb = new();
             int i = 231;
             int index = 0;
-            int id = 0;
             while (i < data.Length)
             {
                 int strLen = BitConverter.ToInt32(data, i) - 1;
@@ -327,11 +326,7 @@ namespace Aogami.WinForms
                     i += 470 + strLen;
                 }
 
-                if (!str.StartsWith("NOT USED"))
-                {
-                    sb.AppendLine($"{{ {index}, new({index++}, \"{str}\", {id}, {id}, {id}) }},");
-                }
-                id += 1;
+                sb.AppendLine($"{{ {index++}, \"{str}\" }},");
             }
 
             File.WriteAllText("output_test.out", sb.ToString());
@@ -343,10 +338,10 @@ namespace Aogami.WinForms
             readyForUserInput = false;
             if (FirstNameTextBox.Text.Length > 8) FirstNameTextBox.Text = FirstNameTextBox.Text[..8];
             if (LastNameTextBox.Text.Length > 8) LastNameTextBox.Text = LastNameTextBox.Text[..8];
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName, FirstNameTextBox.Text, 8);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName2, FirstNameTextBox.Text, 8);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName3, FirstNameTextBox.Text, 8);
-            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FullName, $"{FirstNameTextBox.Text} {LastNameTextBox.Text}", 20);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName, FirstNameTextBox.Text, 16);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName2, FirstNameTextBox.Text, 16);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FirstName3, FirstNameTextBox.Text, 16);
+            openedGameSaveData.UpdateString(SMTVGameSaveDataOffsets.FullName, $"{FirstNameTextBox.Text} {LastNameTextBox.Text}", 40);
             readyForUserInput = true;
         }
 
