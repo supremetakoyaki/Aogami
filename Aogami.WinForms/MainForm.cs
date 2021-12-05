@@ -127,6 +127,22 @@ namespace Aogami.WinForms
             }
             DemonStockListView.Items[0].Selected = true;
 
+            MiracleListDataGridView.Rows.Clear();
+            foreach (var kvp in SMTVMiracleCollection.MiracleList)
+            {
+                int miracleIndex = kvp.Key;
+                string miracleName = kvp.Value;
+                if (!miracleName.StartsWith("NOT USED"))
+                {
+                    int miracleValue = openedGameSaveData.RetrieveByte(SMTVGameSaveDataOffsets.MiracleOffset + miracleIndex);
+                    int miracleRowIndex = MiracleListDataGridView.Rows.Add();
+                    MiracleListDataGridView.Rows[miracleRowIndex].Cells[0].Value = miracleIndex;
+                    MiracleListDataGridView.Rows[miracleRowIndex].Cells[1].Value = miracleName;
+                    MiracleListDataGridView.Rows[miracleRowIndex].Cells[2].Value = miracleValue;
+                    MiracleListDataGridView.Rows[miracleRowIndex].Tag = miracleIndex;
+                }
+            }
+
             readyForUserInput = true;
         }
 
@@ -303,7 +319,7 @@ namespace Aogami.WinForms
         private void DebugTestsButton_Click(object sender, EventArgs e)
         {
             // I'm trying to read the game's files.
-            byte[] data = File.ReadAllBytes("GodParameterName.uexp");
+            byte[] data = File.ReadAllBytes("GodParameterHelpMessage.uexp");
 
             System.Text.StringBuilder sb = new();
             int i = 231;
@@ -317,16 +333,16 @@ namespace Aogami.WinForms
                 {
                     strLen *= -1;
                     strLen -= 1;
-                    str = System.Text.Encoding.ASCII.GetString(data, i + 4, strLen * 2).Replace("\0", "").Replace("\u0019", "");
+                    str = System.Text.Encoding.Default.GetString(data, i + 4, strLen * 2).Replace("\0", "").Replace("\u0019", "");
                     i += 486 + strLen;
                 }
                 else
                 {
-                    str = System.Text.Encoding.ASCII.GetString(data, i + 4, strLen);
+                    str = System.Text.Encoding.Default.GetString(data, i + 4, strLen);
                     i += 470 + strLen;
                 }
 
-                sb.AppendLine($"{{ {index++}, \"{str}\" }},");
+                sb.AppendLine($"            {{ {index++}, \"{str}\" }},");
             }
 
             File.WriteAllText("output_test.out", sb.ToString());
@@ -838,6 +854,79 @@ namespace Aogami.WinForms
             if (openedGameSaveData == null || !readyForUserInput || DemonStockListView.SelectedIndices.Count != 1) return;
             DemonSkillEditorForm skillEditor = new(DemonStockListView.SelectedIndices[0], DemonStockListView.SelectedItems[0].SubItems[0].Text, openedGameSaveData);
             skillEditor.ShowDialog();
+        }
+
+        private void MiracleListDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new(ItemAmountColumn_KeyPress);
+            if (ItemListDataGridView.CurrentCell.ColumnIndex == 2)
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(ItemAmountColumn_KeyPress);
+                }
+            }
+        }
+
+        private void MiracleListDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput || e.ColumnIndex != 2) return;
+            readyForUserInput = false;
+
+            DataGridViewRow itemRow = MiracleListDataGridView.Rows[e.RowIndex];
+            if (itemRow.Tag is int miracleIndex)
+            {
+                if (int.TryParse(itemRow.Cells[2].Value.ToString(), out int miracleValue))
+                {
+                    if (miracleValue < 0) miracleValue = 0;
+                    else if (miracleValue > 255) miracleValue = 255;
+                }
+
+                itemRow.Cells[2].Value = miracleValue;
+                openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.MiracleOffset + miracleIndex, (byte)miracleValue);
+            }
+
+            readyForUserInput = true;
+        }
+
+        private void SetMiraclesLearnedButton_Click(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+
+            foreach (DataGridViewRow miracleRow in MiracleListDataGridView.Rows)
+            {
+                if (miracleRow.Tag is int miracleIndex)
+                {
+                    if (miracleRow.Cells[1].Value.ToString() is string miracleName && !miracleName.StartsWith("NOT USED"))
+                    {
+                        miracleRow.Cells[2].Value = 3;
+                        openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.MiracleOffset + miracleIndex, 3);
+                    }
+                }
+            }
+
+            readyForUserInput = true;
+        }
+
+        private void SetMiraclesNotLearnedButton_Click(object sender, EventArgs e)
+        {
+            if (openedGameSaveData == null || !readyForUserInput) return;
+            readyForUserInput = false;
+
+            foreach (DataGridViewRow miracleRow in MiracleListDataGridView.Rows)
+            {
+                if (miracleRow.Tag is int miracleIndex)
+                {
+                    if (miracleRow.Cells[1].Value.ToString() is string miracleName && !miracleName.StartsWith("NOT USED"))
+                    {
+                        miracleRow.Cells[2].Value = 0;
+                        openedGameSaveData.UpdateByte(SMTVGameSaveDataOffsets.MiracleOffset + miracleIndex, 0);
+                    }
+                }
+            }
+
+            readyForUserInput = true;
         }
     }
 }

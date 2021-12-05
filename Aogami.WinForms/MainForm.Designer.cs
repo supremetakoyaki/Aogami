@@ -92,6 +92,13 @@
             this.ImportDecryptedDataButton = new System.Windows.Forms.Button();
             this.ExportDecryptedDataButton = new System.Windows.Forms.Button();
             this.DemonImageList = new System.Windows.Forms.ImageList(this.components);
+            this.MiraclesTabPage = new System.Windows.Forms.TabPage();
+            this.MiracleListDataGridView = new System.Windows.Forms.DataGridView();
+            this.SetMiraclesLearnedButton = new System.Windows.Forms.Button();
+            this.SetMiraclesNotLearnedButton = new System.Windows.Forms.Button();
+            this.MiracleIndexTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MiracleNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MiracleValueTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveDataTabControl.SuspendLayout();
             this.GeneralStatsTabPage.SuspendLayout();
@@ -112,6 +119,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DemonExperienceNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DemonLevelNumUpDown)).BeginInit();
             this.SaveDataGroupBox.SuspendLayout();
+            this.MiraclesTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MiracleListDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenSaveFileButton
@@ -149,6 +158,7 @@
             this.SaveDataTabControl.Controls.Add(this.GeneralStatsTabPage);
             this.SaveDataTabControl.Controls.Add(this.ItemsTabPage);
             this.SaveDataTabControl.Controls.Add(this.DemonsTabPage);
+            this.SaveDataTabControl.Controls.Add(this.MiraclesTabPage);
             this.SaveDataTabControl.Location = new System.Drawing.Point(6, 22);
             this.SaveDataTabControl.Name = "SaveDataTabControl";
             this.SaveDataTabControl.SelectedIndex = 0;
@@ -837,6 +847,85 @@
             this.DemonImageList.ImageSize = new System.Drawing.Size(68, 52);
             this.DemonImageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // MiraclesTabPage
+            // 
+            this.MiraclesTabPage.Controls.Add(this.SetMiraclesLearnedButton);
+            this.MiraclesTabPage.Controls.Add(this.SetMiraclesNotLearnedButton);
+            this.MiraclesTabPage.Controls.Add(this.MiracleListDataGridView);
+            this.MiraclesTabPage.Location = new System.Drawing.Point(4, 24);
+            this.MiraclesTabPage.Name = "MiraclesTabPage";
+            this.MiraclesTabPage.Size = new System.Drawing.Size(540, 231);
+            this.MiraclesTabPage.TabIndex = 3;
+            this.MiraclesTabPage.Text = "Miracles";
+            this.MiraclesTabPage.UseVisualStyleBackColor = true;
+            // 
+            // MiracleListDataGridView
+            // 
+            this.MiracleListDataGridView.AllowUserToAddRows = false;
+            this.MiracleListDataGridView.AllowUserToDeleteRows = false;
+            this.MiracleListDataGridView.AllowUserToResizeColumns = false;
+            this.MiracleListDataGridView.AllowUserToResizeRows = false;
+            this.MiracleListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MiracleListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MiracleIndexTextBoxColumn,
+            this.MiracleNameTextBoxColumn,
+            this.MiracleValueTextBoxColumn});
+            this.MiracleListDataGridView.Location = new System.Drawing.Point(6, 6);
+            this.MiracleListDataGridView.MultiSelect = false;
+            this.MiracleListDataGridView.Name = "MiracleListDataGridView";
+            this.MiracleListDataGridView.RowHeadersVisible = false;
+            this.MiracleListDataGridView.RowTemplate.Height = 25;
+            this.MiracleListDataGridView.ShowEditingIcon = false;
+            this.MiracleListDataGridView.Size = new System.Drawing.Size(528, 190);
+            this.MiracleListDataGridView.TabIndex = 1;
+            this.MiracleListDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.MiracleListDataGridView_CellValueChanged);
+            this.MiracleListDataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.MiracleListDataGridView_EditingControlShowing);
+            // 
+            // SetMiraclesLearnedButton
+            // 
+            this.SetMiraclesLearnedButton.BackColor = System.Drawing.Color.MintCream;
+            this.SetMiraclesLearnedButton.Location = new System.Drawing.Point(328, 202);
+            this.SetMiraclesLearnedButton.Name = "SetMiraclesLearnedButton";
+            this.SetMiraclesLearnedButton.Size = new System.Drawing.Size(100, 23);
+            this.SetMiraclesLearnedButton.TabIndex = 4;
+            this.SetMiraclesLearnedButton.Text = "Learn All";
+            this.SetMiraclesLearnedButton.UseVisualStyleBackColor = false;
+            this.SetMiraclesLearnedButton.Click += new System.EventHandler(this.SetMiraclesLearnedButton_Click);
+            // 
+            // SetMiraclesNotLearnedButton
+            // 
+            this.SetMiraclesNotLearnedButton.BackColor = System.Drawing.Color.Ivory;
+            this.SetMiraclesNotLearnedButton.Location = new System.Drawing.Point(434, 202);
+            this.SetMiraclesNotLearnedButton.Name = "SetMiraclesNotLearnedButton";
+            this.SetMiraclesNotLearnedButton.Size = new System.Drawing.Size(100, 23);
+            this.SetMiraclesNotLearnedButton.TabIndex = 3;
+            this.SetMiraclesNotLearnedButton.Text = "Unlearn All";
+            this.SetMiraclesNotLearnedButton.UseVisualStyleBackColor = false;
+            this.SetMiraclesNotLearnedButton.Click += new System.EventHandler(this.SetMiraclesNotLearnedButton_Click);
+            // 
+            // MiracleIndexTextBoxColumn
+            // 
+            this.MiracleIndexTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MiracleIndexTextBoxColumn.FillWeight = 25F;
+            this.MiracleIndexTextBoxColumn.HeaderText = "Index";
+            this.MiracleIndexTextBoxColumn.MinimumWidth = 10;
+            this.MiracleIndexTextBoxColumn.Name = "MiracleIndexTextBoxColumn";
+            // 
+            // MiracleNameTextBoxColumn
+            // 
+            this.MiracleNameTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MiracleNameTextBoxColumn.HeaderText = "Name";
+            this.MiracleNameTextBoxColumn.MinimumWidth = 50;
+            this.MiracleNameTextBoxColumn.Name = "MiracleNameTextBoxColumn";
+            this.MiracleNameTextBoxColumn.ReadOnly = true;
+            // 
+            // MiracleValueTextBoxColumn
+            // 
+            this.MiracleValueTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MiracleValueTextBoxColumn.FillWeight = 26F;
+            this.MiracleValueTextBoxColumn.HeaderText = "Value Byte";
+            this.MiracleValueTextBoxColumn.Name = "MiracleValueTextBoxColumn";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -877,6 +966,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DemonExperienceNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DemonLevelNumUpDown)).EndInit();
             this.SaveDataGroupBox.ResumeLayout(false);
+            this.MiraclesTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MiracleListDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -947,5 +1038,12 @@
         private Button EditSkillsButton;
         private ImageList DemonImageList;
         private Button DemonClearButton;
+        private TabPage MiraclesTabPage;
+        private Button SetMiraclesLearnedButton;
+        private Button SetMiraclesNotLearnedButton;
+        private DataGridView MiracleListDataGridView;
+        private DataGridViewTextBoxColumn MiracleIndexTextBoxColumn;
+        private DataGridViewTextBoxColumn MiracleNameTextBoxColumn;
+        private DataGridViewTextBoxColumn MiracleValueTextBoxColumn;
     }
 }

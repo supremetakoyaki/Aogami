@@ -22,6 +22,9 @@
         public const int Macca = 12144;
         public const int Glory = 12168;
 
+        // Miracles
+        public const int MiracleOffset = 12172; // byte (0 to 255)
+
         // Items
         public const int ItemOffset = 13216; // byte (0 to 255)
 
