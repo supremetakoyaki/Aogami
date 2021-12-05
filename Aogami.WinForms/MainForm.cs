@@ -198,8 +198,8 @@ namespace Aogami.WinForms
             short DemonId = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonId + offsetSum);
             int DemonExp = openedGameSaveData.RetrieveInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum);
             short DemonLevel = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum);
-            short DemonHp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum);
-            short DemonMp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum);
+            short DemonHp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonHpTotal + offsetSum);
+            short DemonMp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonMpTotal + offsetSum);
             short DemonStrength = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum);
             short DemonVitality = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonVitality3 + offsetSum);
             short DemonMagic = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonMagic3 + offsetSum);
@@ -565,14 +565,15 @@ namespace Aogami.WinForms
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
+
                 openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, (int)DemonExperienceNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum, (short)DemonLevelNumUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpBase + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpBalm + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpTotal + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpBase + offsetSum, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpBalm + offsetSum, (short)DemonMpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpTotal + offsetSum, (short)DemonMpNumericUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength + offsetSum, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, (short)StrengthNumUpDown.Value);
                 openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, (short)StrengthNumUpDown.Value);
@@ -643,9 +644,9 @@ namespace Aogami.WinForms
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, (short)DemonHpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpBase + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpBalm + offsetSum, (short)DemonHpNumericUpDown.Value);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpTotal + offsetSum, (short)DemonHpNumericUpDown.Value);
             }
             readyForUserInput = true;
         }
@@ -663,9 +664,14 @@ namespace Aogami.WinForms
             else
             {
                 int offsetSum = (DemonStockListView.SelectedIndices[0] - 1) * 392;
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, (short)DemonMpNumericUpDown.Value);
-                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, (short)DemonMpNumericUpDown.Value);
+                short newTotalMp = (short)DemonMpNumericUpDown.Value;
+                short baseMp = openedGameSaveData.RetrieveInt16(SMTVGameSaveDataOffsets.DemonMpBase + offsetSum);
+                if (baseMp <= 0) baseMp = (short)(newTotalMp / 4);
+                short differenceMp = (short)(newTotalMp - baseMp);
+                if (differenceMp < 0) differenceMp = 0;
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpBase + offsetSum, baseMp);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpBalm + offsetSum, differenceMp);
+                openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpTotal + offsetSum, newTotalMp);
             }
             readyForUserInput = true;
         }
@@ -811,12 +817,12 @@ namespace Aogami.WinForms
             openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonId + offsetSum, -1);
             openedGameSaveData.UpdateInt32(SMTVGameSaveDataOffsets.DemonExp + offsetSum, 0);
             openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonLevel + offsetSum, 1);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp + offsetSum, 0);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp2 + offsetSum, 0);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHp3 + offsetSum, 0);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp + offsetSum, 0);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp2 + offsetSum, 0);
-            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMp3 + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpBase + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpBalm + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonHpTotal + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpBase + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpBalm + offsetSum, 0);
+            openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonMpTotal + offsetSum, 0);
             openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength + offsetSum, 0);
             openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength2 + offsetSum, 0);
             openedGameSaveData.UpdateInt16(SMTVGameSaveDataOffsets.DemonStrength3 + offsetSum, 0);
