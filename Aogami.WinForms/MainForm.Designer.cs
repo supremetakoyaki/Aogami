@@ -705,7 +705,7 @@
             // 
             this.DemonMpNumericUpDown.Location = new System.Drawing.Point(304, 128);
             this.DemonMpNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            999,
             0,
             0,
             0});
@@ -727,7 +727,7 @@
             // 
             this.DemonHpNumericUpDown.Location = new System.Drawing.Point(304, 99);
             this.DemonHpNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            999,
             0,
             0,
             0});

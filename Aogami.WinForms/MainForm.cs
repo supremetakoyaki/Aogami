@@ -163,9 +163,9 @@ namespace Aogami.WinForms
             if (NahobinoLevel < 1) NahobinoLevel = 1;
             else if (NahobinoLevel > 999) NahobinoLevel = 999;
             if (NahobinoHp < 0) NahobinoHp = 0;
-            else if (NahobinoHp > 9999) NahobinoHp = 9999;
+            else if (NahobinoHp > 999) NahobinoHp = 999;
             if (NahobinoMp < 0) NahobinoMp = 0;
-            else if (NahobinoMp > 9999) NahobinoMp = 9999;
+            else if (NahobinoMp > 999) NahobinoMp = 999;
             if (NahobinoStrength < 0) NahobinoStrength = 0;
             else if (NahobinoStrength > 999) NahobinoStrength = 999;
             if (NahobinoVitality < 0) NahobinoVitality = 0;
@@ -210,9 +210,9 @@ namespace Aogami.WinForms
             if (DemonLevel < 1) DemonLevel = 1;
             else if (DemonLevel > 99) DemonLevel = 99;
             if (DemonHp < 0) DemonHp = 0;
-            else if (DemonHp > 9999) DemonHp = 9999;
+            else if (DemonHp > 999) DemonHp = 999;
             if (DemonMp < 0) DemonMp = 0;
-            else if (DemonMp > 9999) DemonMp = 9999;
+            else if (DemonMp > 999) DemonMp = 999;
             if (DemonStrength < 0) DemonStrength = 0;
             else if (DemonStrength > 999) DemonStrength = 999;
             if (DemonVitality < 0) DemonVitality = 0;
