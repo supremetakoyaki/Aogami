@@ -319,30 +319,30 @@ namespace Aogami.WinForms
         private void DebugTestsButton_Click(object sender, EventArgs e)
         {
             // I'm trying to read the game's files.
-            byte[] data = File.ReadAllBytes("GodParameterHelpMessage.uexp");
+            byte[] data = File.ReadAllBytes("EventFlagTable.uexp");
 
             System.Text.StringBuilder sb = new();
-            int i = 231;
-            int index = 0;
+            int i = 97;
             while (i < data.Length)
             {
-                int strLen = BitConverter.ToInt32(data, i) - 1;
-                string str;
+                int index = BitConverter.ToInt32(data, i);
+                if (index == 8191) break;
 
-                if (strLen < 0)
+                string str = System.Text.Encoding.Default.GetString(data, i + 4, 32).Replace("\0", "");
+                if (index == 827081300)
                 {
-                    strLen *= -1;
-                    strLen -= 1;
-                    str = System.Text.Encoding.Default.GetString(data, i + 4, strLen * 2).Replace("\0", "").Replace("\u0019", "");
-                    i += 486 + strLen;
+                    i += 12;
+                }
+                else if (str.StartsWith("TBL"))
+                {
+                    i += 16;
                 }
                 else
                 {
-                    str = System.Text.Encoding.Default.GetString(data, i + 4, strLen);
-                    i += 470 + strLen;
+                    sb.AppendLine($"            {{ {index}, \"{str}\" }},");
+                    i += 36;
+                    if (index >= 8191) break;
                 }
-
-                sb.AppendLine($"            {{ {index++}, \"{str}\" }},");
             }
 
             File.WriteAllText("output_test.out", sb.ToString());
@@ -865,7 +865,7 @@ namespace Aogami.WinForms
         private void MiracleListDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new(ItemAmountColumn_KeyPress);
-            if (ItemListDataGridView.CurrentCell.ColumnIndex == 2)
+            if (MiracleListDataGridView.CurrentCell.ColumnIndex == 2)
             {
                 if (e.Control is TextBox textBox)
                 {
